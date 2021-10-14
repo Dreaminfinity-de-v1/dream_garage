@@ -19,9 +19,14 @@ client_scripts {
 	'@es_extended/locale.lua',
 	'@NativeUI/NativeUI.lua',
 	'locales/en.lua',
-	'config.lua',
-	'config_garage.lua',
+	'configs/config.lua',
+	'configs/garage.lua',
+	'configs/towyard.lua',
 	'client/cl.lua',
+	'client/blips_npcs.lua',
+	'client/interactions.lua',
+	'client/garagemanager_menu.lua',
+	'client/towyardmanager_menu.lua',
 
 }
 
