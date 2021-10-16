@@ -1,7 +1,8 @@
 Config.Towyards = {
-    toyard_test = {   
-        name = 'Toyard Test',
-        center_pos = vector3(409.6227, -1623.1615, 29.2919),
+    towyard_test = {   
+        name = 'Towyard Test',
+        parking_pos = vector3(409.6227, -1623.1615, 29.2919),
+        parking_radius = 20,
         blip = {
             color   = 17,
             sprite  = 68, -- Icontype
@@ -9,7 +10,7 @@ Config.Towyards = {
             display = 2,
         },
 
-        toyardmanager = {
+        towyardmanager = {
             pos = vector3(409.6227, -1623.1615, 28.2919),
             heading = 225.7801,
             type = 4,

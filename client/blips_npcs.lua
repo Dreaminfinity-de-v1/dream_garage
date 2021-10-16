@@ -8,16 +8,21 @@ Citizen.CreateThread(function()
 	if not Config.EnableBlips then return end
 
     blips['garages'] = {}
-	for k, v in pairs(Config.Garages) do
+	for i, v in ipairs(Config.Garages) do
         if v.blip ~= nil then
-            blips['garages'][k] = createBlip(v.center_pos, v.blip.sprite or 524, v.blip.display, v.blip.color or 3, v.blip.scale, v.blip.titel or _U('garage_blip_name'))
+            blips['garages'][v.id] = createBlip(v.blip.pos, v.blip.sprite or 524, v.blip.display, v.blip.color or 3, v.blip.scale, v.blip.titel or _U('garage_blip_name'))
+
+            for i2, v2 in ipairs(v.parking) do
+                createDebugBlipForRadius(v2.pos, v2.radius)
+            end
         end
 	end
 
     blips['towyards'] = {}
     for k, v in pairs(Config.Towyards) do
         if v.blip ~= nil then
-            blips['towyards'][k] = createBlip(v.center_pos, v.blip.sprite or 68, v.blip.display, v.blip.color or 17, v.blip.scale, v.blip.titel or _U('toyard_blip_name'))
+            blips['towyards'][k] = createBlip(v.parking_pos, v.blip.sprite or 68, v.blip.display, v.blip.color or 17, v.blip.scale, v.blip.titel or _U('towyard_blip_name'))
+            createDebugBlipForRadius(v.parking_pos, v.parking_radius)
         end
 	end
 end)
@@ -26,12 +31,12 @@ end)
 -- NPC
 Citizen.CreateThread(function()
 
-    for k, v in pairs(Config.Garages) do
+    for i, v in ipairs(Config.Garages) do
         spawnNPC(v.garagemanager.type, v.garagemanager.model, v.garagemanager.pos, v.garagemanager.heading)
     end
 
     for k, v in pairs(Config.Towyards) do
-        spawnNPC(v.toyardmanager.type, v.toyardmanager.model, v.toyardmanager.pos, v.toyardmanager.heading)
+        spawnNPC(v.towyardmanager.type, v.towyardmanager.model, v.towyardmanager.pos, v.towyardmanager.heading)
     end
 end)
 
@@ -88,6 +93,15 @@ function createBlip(pos, sprite, display, color, scale, titel)
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentString(titel)
     EndTextCommandSetBlipName(blip)
-
     return blip
 end
+
+function createDebugBlipForRadius(pos, radius)
+    if Config.Debug == true then
+        local debug_blip = AddBlipForRadius(pos.x, pos.y, pos.z, 0.0 + radius)
+        SetBlipHighDetail(debug_blip, true)
+        SetBlipColour(debug_blip, 1)
+        SetBlipAlpha (debug_blip, 128)
+    end
+end
+

@@ -26,12 +26,12 @@ Citizen.CreateThread(function()
 		local playerPed = PlayerPedId()
 		local PlayerCoords    = GetEntityCoords(playerPed)
 
-        for k, v in pairs(Config.Garages) do
+        for i, v in pairs(Config.Garages) do
             continue = true
             local distance  = GetDistanceBetweenCoords(PlayerCoords, v.garagemanager.pos, true)
             if distance <= (v.garagemanager.radius or 2) then
                 isIn = true
-                area = k
+                area = v.id
                 part = 'garagemanager'
                 MSG = _U('help_notification_garage')
                 break
@@ -40,8 +40,8 @@ Citizen.CreateThread(function()
     
         for k, v in pairs(Config.Towyards) do
             continue = true
-            local distance  = GetDistanceBetweenCoords(PlayerCoords, v.toyardmanager.pos, true)
-            if distance <= v.toyardmanager.radius then
+            local distance  = GetDistanceBetweenCoords(PlayerCoords, v.towyardmanager.pos, true)
+            if distance <= v.towyardmanager.radius then
                 isIn = true
                 area = k
                 part = 'towyardmanager'
@@ -71,6 +71,7 @@ Citizen.CreateThread(function()
             interactionArea     = nil
             interactionPart     = nil
             interactionMSG      = nil
+
             TriggerEvent('dream_garage:hasExitedInteractionArea', area, part)
         end
 
@@ -89,9 +90,13 @@ Citizen.CreateThread(function ()
             if IsControlJustReleased(0, Config.KeyControle) then
 
                 if interactionPart == 'garagemanager' then
-                    --opengaragemanagerMenu()
+                    Citizen.CreateThread(function()
+                        openGaragemanagerMenu()
+                    end)
                 elseif interactionPart == 'towyardmanager' then
-                    --openTowYardMenu()
+                    Citizen.CreateThread(function()
+                        openTowyardmanagerMenu()
+                    end)
                 end
 
                 interactionPart = nil

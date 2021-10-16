@@ -1,10 +1,10 @@
 Config                  = {}
 
 Config.Locale           = 'en'
+Config.Debug            = false
 Config.EnableBlips      = true
 
 Config.NPCsDefaultType  = 4
 Config.NPCsDefaultModel = "ig_mp_agent14"
 
-Config.KeyControle         = 38 -- Default: 38 (E)
-
+Config.KeyControle      = 38 -- Default: 38 (E)
