@@ -18,10 +18,11 @@ function getVehicleinParkingarea()
         end
     end
 
-    if Config.Debug == true then
+    if Config.Debugmode.enable == true and Config.Debugmode.notification then
         for i, v in ipairs(vehicles) do
             if GetVehicleNumberPlateText(v) == 'DEBUG 10' or GetVehicleNumberPlateText(v) == 'DEBUG 20' then
-                TriggerEvent("swt_notifications:Success",'Found',GetVehicleNumberPlateText(v),'top',5000,true)
+                TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_debug_getVehicleinParkingarea', GetVehicleNumberPlateText(v)),
+                    Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.debug,'black',true,Config.Notification.icons.debug)
             end
         end
     end
@@ -44,6 +45,27 @@ function getVehicleinParkingareaOwnedVehicles(cb)
 
         cb(result)
     end)
+
+end
+
+function getOwnedVehiclesInGarage(cb, garage_name)
+
+    if garage_name ~= nil then
+    
+        ESX.TriggerServerCallback('dream_garage:getOwnedVehicles', function(vehicles)
+
+            local result = {}
+            for i, v in ipairs(vehicles) do
+                if garage_name == v.garage_name then
+                    table.insert( result, v )
+                end
+            end
+
+            cb(result)
+        end)
+    else
+        cb({})
+    end
 
 end
 

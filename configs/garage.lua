@@ -39,7 +39,14 @@ Config.Garages = {
             radius = 2,
             
             spawnpoints = {
-                --{ coords = vector3(438.4, -1018.3, 27.7), heading = 90.0, radius = 6.0 },
+                { coords = vector3(231.8013, -807.6357, 29.4502), heading = 66.3220, radius = 8.0 },
+                { coords = vector3(237.4018, -792.2230, 30.5198), heading = 67.5449, radius = 8.0 },
+                { coords = vector3(242.9826, -777.4233, 29.6532), heading = 63.2060, radius = 8.0 },
+                { coords = vector3(227.9198, -768.6195, 29.7889), heading = 67.9624, radius = 8.0 },
+                { coords = vector3(213.9067, -781.2046, 29.8636), heading = 250.1079, radius = 8.0 },
+                { coords = vector3(216.8248, -799.1686, 29.7900), heading = 68.1038, radius = 8.0 },
+                { coords = vector3(227.9840, -789.3577, 29.6770), heading = 251.6137, radius = 8.0 },
+                { coords = vector3(234.7001, -752.2458, 29.8256), heading = 68.6190, radius = 3.0 },
             },
         },
 
@@ -103,13 +110,11 @@ Config.Garages = {
         id = 'garage_maze_bank_arena',
         name = 'Maze Bank Arena Garage',
         parking = {
-            { pos = vector3(-196.7715, -1947.2906, 27.1880), radius = 30 },
-            { pos = vector3(-189.5186, -1977.9299, 27.1962), radius = 30 },
-            { pos = vector3(-202.2609, -2041.4150, 27.6204), radius = 40 },
-            { pos = vector3(-234.6931, -2078.8992, 27.6206), radius = 40 },
+            { pos = vector3(-98.4077, -2005.0742, 18.0182), radius = 30 },
+            { pos = vector3(-62.6902, -2007.4724, 18.0170), radius = 30 },
         },
         blip = {
-            pos     = vector3(-192.5227, -1960.4939, 27.6210),
+            pos     = vector3(-73.2576, -2003.6951, 18.2753),
             color   = 3,
             sprite  = 524, -- Icontype
             scale   = 1.0,
@@ -117,14 +122,23 @@ Config.Garages = {
         },
 
         garagemanager = {
-            pos = vector3(-176.4105, -1997.9507, 26.7508),
-            heading = 17.9685,
+            pos = vector3(-73.2576, -2003.6951, 17.2753),
+            heading = 175.6549,
             type = 4,
             model = "a_m_y_bevhills_02",
             radius = 2,
             
             spawnpoints = {
-                --{ coords = vector3(438.4, -1018.3, 27.7), heading = 90.0, radius = 6.0 },
+                { coords = vector3(-96.7830, -2008.0227, 18.0170), heading = 163.1878, radius = 8.0 },
+                { coords = vector3(-85.3830, -2005.1162, 18.0170), heading = 349.8642, radius = 8.0 },
+                { coords = vector3(-73.6487, -2010.2273, 18.0170), heading = 200.9688, radius = 8.0 },
+                { coords = vector3(-53.6265, -2022.6761, 18.0170), heading = 17.8954, radius = 8.0 },
+                { coords = vector3(-76.9615, -2029.4341, 18.0170), heading = 9.9522, radius = 8.0 },
+                { coords = vector3(-95.5483, -2027.0048, 18.0170), heading = 344.4381, radius = 8.0 },
+                { coords = vector3(-104.4445, -1984.3794, 18.0170), heading = 168.0603, radius = 8.0 },
+                { coords = vector3(-82.2450, -1986.9929, 18.0170), heading = 168.8954, radius = 8.0 },
+                { coords = vector3(-48.2266, -2004.3680, 18.0169), heading = 105.4939, radius = 8.0 },
+                { coords = vector3(-55.2037, -1992.7819, 18.0170), heading = 136.5096, radius = 3.0 },
             },
         },
     },

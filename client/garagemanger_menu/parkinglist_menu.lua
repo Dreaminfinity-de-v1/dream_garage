@@ -29,7 +29,7 @@ function addParkinglist(mainMenu)
                 table.insert( items['none'], { item = item, data = v } )
             end
     
-            item.Activated = onItemClick
+            item.Activated = onParkinglistItemClick
         end
 
         for _, sort in ipairs(Config.GarageParkinglistSort) do
@@ -72,7 +72,7 @@ function addParkinglist(mainMenu)
 end
 
 
-local function onItemClick(sender, index)
+function onParkinglistItemClick(sender, index)
     --result = 'Geändert - Bugmode'
     --index:RightLabel(result)
 end

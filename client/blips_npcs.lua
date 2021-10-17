@@ -2,42 +2,43 @@ blips = {}
 npcs  = {}
 
 
--- Blips
+
 Citizen.CreateThread(function()
 
 	if not Config.EnableBlips then return end
 
     blips['garages'] = {}
 	for i, v in ipairs(Config.Garages) do
+
+        -- Blips
         if v.blip ~= nil then
             blips['garages'][v.id] = createBlip(v.blip.pos, v.blip.sprite or 524, v.blip.display, v.blip.color or 3, v.blip.scale, v.blip.titel or _U('garage_blip_name'))
-
-            for i2, v2 in ipairs(v.parking) do
-                createDebugBlipForRadius(v2.pos, v2.radius)
-            end
         end
+
+        -- NPCs
+        spawnNPC(v.garagemanager.type, v.garagemanager.model, v.garagemanager.pos, v.garagemanager.heading)
+
+        -- Debug - Blip Parkingin Zones
+        for i2, v2 in ipairs(v.parking) do
+            createDebugBlipForRadius(v2.pos, v2.radius)
+        end
+
 	end
 
     blips['towyards'] = {}
     for k, v in pairs(Config.Towyards) do
+
+        -- Blips
         if v.blip ~= nil then
             blips['towyards'][k] = createBlip(v.parking_pos, v.blip.sprite or 68, v.blip.display, v.blip.color or 17, v.blip.scale, v.blip.titel or _U('towyard_blip_name'))
-            createDebugBlipForRadius(v.parking_pos, v.parking_radius)
         end
-	end
-end)
 
-
--- NPC
-Citizen.CreateThread(function()
-
-    for i, v in ipairs(Config.Garages) do
-        spawnNPC(v.garagemanager.type, v.garagemanager.model, v.garagemanager.pos, v.garagemanager.heading)
-    end
-
-    for k, v in pairs(Config.Towyards) do
+        -- NPCs
         spawnNPC(v.towyardmanager.type, v.towyardmanager.model, v.towyardmanager.pos, v.towyardmanager.heading)
-    end
+
+        -- Debug - Blip Parkingin Zones
+        createDebugBlipForRadius(v.parking_pos, v.parking_radius)
+	end
 end)
 
 
@@ -97,7 +98,7 @@ function createBlip(pos, sprite, display, color, scale, titel)
 end
 
 function createDebugBlipForRadius(pos, radius)
-    if Config.Debug == true then
+    if Config.Debugmode.enable == true and Config.Debugmode.blips then
         local debug_blip = AddBlipForRadius(pos.x, pos.y, pos.z, 0.0 + radius)
         SetBlipHighDetail(debug_blip, true)
         SetBlipColour(debug_blip, 1)
@@ -105,3 +106,32 @@ function createDebugBlipForRadius(pos, radius)
     end
 end
 
+
+
+Citizen.CreateThread(function()
+    while Config.Debugmode.enable == true and Config.Debugmode.marker do
+        Citizen.Wait(0)
+        for i, v in ipairs(Config.Garages) do
+            for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
+                DrawMarker(28, v2.coords.x, v2.coords.y, v2.coords.z, 0, 0, 0, 0, 0, 0,
+                    v2.radius, v2.radius, v2.radius, 255, 255, 0, 100, 0, 0, 0, 0)
+            end
+        end
+    end
+end)
+
+Citizen.CreateThread(function()
+    while Config.Debugmode.enable == true and Config.Debugmode.notification do
+        Citizen.Wait(500)
+        for i, v in ipairs(Config.Garages) do
+            for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
+                for i3, v3 in ipairs(ESX.Game.GetVehiclesInArea(v2.coords, v2.radius)) do
+                    if GetVehicleNumberPlateText(v3) == 'DEBUG 10' or GetVehicleNumberPlateText(v3) == 'DEBUG 20' then
+                        TriggerEvent("swt_notifications:captionIcon",_U('notification_message_parkingout_debug_spawnpoint2', v.id),_U('notification_message_parkingout_debug_spawnpoint', GetVehicleNumberPlateText(v3),i2),
+                            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.debug,'black',true,Config.Notification.icons.debug)
+                    end
+                end
+            end
+        end
+    end
+end)

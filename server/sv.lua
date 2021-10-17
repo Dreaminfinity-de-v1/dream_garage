@@ -1,13 +1,11 @@
 ESX = nil
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-allVehicles = nil
-
 -- Create Database
 Citizen.CreateThread(function()
     MySQL.Async.execute(
         "CREATE TABLE IF NOT EXISTS `dream_owned_vehicle` ( " ..
-        "`plate` varchar(50) NOT NULL, " ..
+        "`plate` varchar(8) NOT NULL, " ..
         "`owner` varchar(60) NOT NULL, " ..
         "`vehicle` longtext NOT NULL, " ..
         "`garage_name` varchar(50), " ..
@@ -26,40 +24,19 @@ Citizen.CreateThread(function()
         ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",
         {}, function(rowsChanged) end
     )
-
-    loadAllVehicles()
 end)
 
 
-
-function loadAllVehicles()
-
-    allVehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle` ORDER BY `dream_owned_vehicle`.`garage_name` ASC', {})   
-end
-
-
-
-function getOwnedVehicles(id)
-
-    local result = {}
-    for i,v in ipairs(allVehicles) do
-
-        if v.owner == id then
-            table.insert( result, v)
-        end
-    end
-
-    return result
-end
-
 ESX.RegisterServerCallback('dream_garage:getOwnedVehicles', function(src, cb)
-
     local xPlayer = ESX.GetPlayerFromId(src)
+
     cb(getOwnedVehicles(xPlayer.getIdentifier()))
 end)
 
 
-AddEventHandler('esx:playerLoaded', function(playerData)
-    
-    loadAllVehicles()
+ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, cb, plate)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
 end)
+

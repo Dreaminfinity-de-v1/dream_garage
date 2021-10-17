@@ -4,20 +4,25 @@ game 'gta5'
 
 description 'Garage von Grewo - Dreaminfinity.de'
 
-version '1.0.0 A002'
+version '1.0.0 A003'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
 	'@es_extended/locale.lua',
+
 	'locales/en.lua',
+
 	'config.lua',
 	'config_garage.lua',
+
+	'server/sv_function.lua',
 	'server/sv.lua',
 }
 
 client_scripts {
 	'@es_extended/locale.lua',
 	'@NativeUILua/NativeUI.lua',
+	
 	'locales/en.lua',
 
 	'configs/config.lua',
