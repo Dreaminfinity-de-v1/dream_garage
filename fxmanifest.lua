@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Garage von Grewo - Dreaminfinity.de'
 
-version '0.3.0-alpha'
+version '0.4.0-alpha'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
@@ -12,11 +12,13 @@ server_scripts {
 
 	'locales/en.lua',
 
-	'config.lua',
-	'config_garage.lua',
+	'configs/config.lua',
+	'configs/config_garage.lua',
+	'configs/config_towyard.lua',
 
 	'server/sv_function.lua',
-	'server/sv.lua',
+	'server/server.lua',
+	'server/sv_commands.lua',
 }
 
 client_scripts {
@@ -26,16 +28,19 @@ client_scripts {
 	'locales/en.lua',
 
 	'configs/config.lua',
-	'configs/garage.lua',
-	'configs/towyard.lua',
+	'configs/config_garage.lua',
+	'configs/config_towyard.lua',
 
-	'client/cl.lua',
+	'client/client.lua',
 	'client/blips_npcs.lua',
 	'client/interactions.lua',
 
 	'client/functions/utils.lua',
+	'client/functions/command.lua',
 	'client/functions/garagemanager.lua',
 	'client/functions/towyardmanager.lua',
+
+	'client/functions/give_vehicle.lua',
 
 	'client/garagemanger_menu/garagemanager_menu.lua',
 	'client/garagemanger_menu/parkingin_menu.lua',

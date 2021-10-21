@@ -48,18 +48,31 @@ function getVehicleinParkingareaOwnedVehicles(cb)
 
 end
 
-function getOwnedVehiclesInGarage(cb, garage_name)
+function getOwnedVehiclesInGarage(cb, garage_id, garage_types)
 
-    if garage_name ~= nil then
+    if garage_id ~= nil then
     
         ESX.TriggerServerCallback('dream_garage:getOwnedVehicles', function(vehicles)
 
             local result = {}
-            for i, v in ipairs(vehicles) do
-                if garage_name == v.garage_name then
-                    table.insert( result, v )
+
+            if garage_types ~= nil then
+                for i,v in ipairs(garage_types) do
+                    for i2, v2 in ipairs(vehicles) do
+                        if garage_id == v2.garage_id and v == v2.type then
+                            table.insert( result, v2 )
+                        end
+                    end
+                end
+            else
+                for i, v in ipairs(vehicles) do
+                    if garage_id == v.garage_id then
+                        table.insert( result, v )
+                    end
                 end
             end
+
+
 
             cb(result)
         end)

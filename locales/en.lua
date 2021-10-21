@@ -36,6 +36,22 @@ Locales['en'] = {
   ['notification_message_parkingout_debug_spawnpoint'] = "Debug_Plate: %s | Spawnring: %s",
   ['notification_message_parkingout_debug_spawnpoint2'] = "Debug_Garagename: %s",
   ['notification_message_parkingout_debug_getVehicleinParkingarea'] = "Debug_Plate: %s",
+
+  ['nopermissions'] = "You don't have any permissions for %s!",
+  ['cmd_giveVehicle'] = "The vehicle is in the garage.",
+  ['cmd_giveVehicle_usage'] = "Usage: /%s <type> <model> [player] [0|1|2] [plate]",
+  ['cmd_giveVehicle_type'] = "Vehicle type",
+  ['cmd_giveVehicle_model'] = "Vehicle spawnname or hash",
+  ['cmd_giveVehicle_target'] = "Optional, Target player server-id/license",
+  ['cmd_giveVehicle_plate-grade'] = "Optional, 0(default): 'HPF8DCD9' | 1: 'FXT 532' | 2: 'TEST'",
+  ['cmd_giveVehicle_plate'] = "Optional, Vehicle custom plate (max. 8 chars)",
+  ['cmd_giveVehicle_maxchars'] = "max. 8 chars for [plate]",
+  ['cmd_giveVehicle_invalid-model'] = "Invalid vehicle model",
+  ['cmd_giveVehicle_plateuse'] = "Plate is used: [%s]",
+  ['cmd_giveVehicle_wrongplate'] = "Plate to long! max 8 Chars!",
+  ['cmd_giveVehicle_plateisnil'] = "ERROR - PLATE IS NIL!",
+  ['cmd_giveVehicle_wrong-user'] = "The user doesn't exists!",
+  ['cmd_giveVehicle_wrong-type'] = "The type doesn't exists!",
 }
 
 

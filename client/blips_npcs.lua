@@ -109,12 +109,20 @@ end
 
 
 Citizen.CreateThread(function()
-    while Config.Debugmode.enable == true and Config.Debugmode.marker do
+    while Config.Debugmode.enable == true and (Config.Debugmode.marker.yellow or Config.Debugmode.marker.red) do
         Citizen.Wait(0)
         for i, v in ipairs(Config.Garages) do
-            for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
-                DrawMarker(28, v2.coords.x, v2.coords.y, v2.coords.z, 0, 0, 0, 0, 0, 0,
-                    v2.radius, v2.radius, v2.radius, 255, 255, 0, 100, 0, 0, 0, 0)
+            if Config.Debugmode.marker.yellow then
+                for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
+                    DrawMarker(28, v2.coords.x, v2.coords.y, v2.coords.z, 0, 0, 0, 0, 0, 0,
+                        v2.radius + 0.0, v2.radius + 0.0, v2.radius + 0.0, 255, 255, 0, 100, 0, 0, 0, 0)
+                end
+            end
+            if Config.Debugmode.marker.red then
+                for i2, v2 in ipairs(v.parking) do
+                    DrawMarker(28, v2.pos.x, v2.pos.y, v2.pos.z, 0, 0, 0, 0, 0, 0,
+                        v2.radius + 0.0, v2.radius + 0.0, v2.radius + 0.0, 255, 0, 0, 100, 0, 0, 0, 0)
+                end
             end
         end
     end

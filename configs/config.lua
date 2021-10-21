@@ -8,6 +8,15 @@ Config.NPCsDefaultModel = "ig_mp_agent14"
 
 Config.KeyControle      = 38 -- Default: 38 (E)
 
+Config.RandomPlateSchemes = {
+    grade_0 = "11AAA111", -- Default Value
+    grade_1 = "AAA 1234", -- other Default Value
+}
+
+Config.Commands = {
+    give_vehicle = 'givevehicle',
+}
+
 Config.Notification = {
     pos = 'top-left',
     timeout = 5000,
@@ -32,7 +41,10 @@ Config.Notification = {
 Config.Debugmode = {
     enable = false,
     blips = true,
-    marker = true,
+    marker = {
+        yellow = false,
+        red = false,
+    },
     notification = true,
 }
 

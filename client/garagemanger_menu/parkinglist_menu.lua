@@ -6,27 +6,25 @@ function addParkinglist(mainMenu)
 
     ESX.TriggerServerCallback('dream_garage:getOwnedVehicles', function(vehicles)
         
-        items = {}
+        local items = {}
+        local none = {}
         
 
         for i, v in ipairs(vehicles) do
 
             item = NativeUI.CreateItem(_U('garage_parkinglist_item', v.plate), _U('garage_parkinglist_item_desc'))
-            if v.vehicle_name ~= nil then
-                item:RightLabel(v.vehicle_name)
+            if v.custom_name ~= nil then
+                item:RightLabel(v.custom_name)
             end
 
 
-            if v.garage_name ~= nil then
-                if items[v.garage_name] == nil then
-                    items[v.garage_name] = {}
+            if v.garage_id ~= nil then
+                if items[v.garage_id] == nil then
+                    items[v.garage_id] = {}
                 end
-                table.insert( items[v.garage_name], { item = item, data = v } )
+                table.insert( items[v.garage_id], { item = item, data = v } )
             else
-                if items['none'] == nil then
-                    items['none'] = {}
-                end
-                table.insert( items['none'], { item = item, data = v } )
+                table.insert( none, { item = item, data = v } )
             end
     
             item.Activated = onParkinglistItemClick
@@ -46,17 +44,17 @@ function addParkinglist(mainMenu)
                 end
             elseif sort == 'unknown_garages' then
                 for k, v in pairs(items) do
-                    if #v > 0 and v[1].data.garage_name ~= nil then
-                        submenu = menuPool:AddSubMenu(menu, _U('garage_parkinglist_item_unknown-garage', v[1].data.garage_name))
+                    if #v > 0 and v[1].data.garage_id ~= nil then
+                        submenu = menuPool:AddSubMenu(menu, _U('garage_parkinglist_item_unknown-garage', v[1].data.garage_id))
                         for i2, v2 in ipairs(v) do
                             submenu:AddItem(v2.item)
                         end
                     end
                 end
             elseif sort == 'out_of_garages' then
-                if items['none'] ~= nil then
+                if #none > 0 then
                     submenu = menuPool:AddSubMenu(menu, _U('garage_parkinglist_item_out-of-garage'))
-                    for k, v in pairs(items['none']) do
+                    for k, v in pairs(none) do
                         submenu:AddItem(v.item)
                     end
                 end

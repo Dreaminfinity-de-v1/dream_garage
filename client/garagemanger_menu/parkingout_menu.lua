@@ -11,8 +11,8 @@ function addParkingoutMenu(mainMenu)
             for i, v in ipairs(vehicles) do
                 local data = v
                 local item = NativeUI.CreateItem(_U('garage_parkingout_item', v.plate), _U('garage_parkingout_item_desc'))
-                if v.vehicle_name ~= nil then
-                    item:RightLabel(v.vehicle_name)
+                if v.custom_name ~= nil then
+                    item:RightLabel(v.custom_name)
                 end
 
                 item.data = data
@@ -29,7 +29,7 @@ function addParkingoutMenu(mainMenu)
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_parkingout_noitem'), _U('garage_parkingout_noitem_desc')))
         end    
-    end, garage.id)
+    end, garage.id, garage.vehicle_types)
 
     return menu
 end
@@ -47,14 +47,14 @@ function onParkingoutItemClick(_data, garage, sender, _index, _menu)
         if #ESX.Game.GetVehiclesInArea(v.coords, v.radius) <= 0 then
             found = true
 
-            ESX.TriggerServerCallback('dream_garage:setVehicleOutparking', function(error) 
+            ESX.TriggerServerCallback('dream_garage:setVehicleOutparking', function(error)
 
                 if error == 'ok' then
 
-                    ESX.Game.SpawnVehicle(data.vehicle.model, v.coords , v.heading, function(vehicle)
+                    ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout'),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.parkingout)
-                        ESX.Game.SetVehicleProperties(vehicle, data.vehicle)
+                        ESX.Game.SetVehicleProperties(vehicle, data.data)
                         Citizen.CreateThread(function ()
                             local blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
                             SetBlipSprite(blip, 1)
@@ -96,10 +96,13 @@ function onParkingoutItemClick(_data, garage, sender, _index, _menu)
                 elseif error == 'database' then
                     TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_database'),
                         Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
+                else
+                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),"ERROR: " .. error,
+                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
                     
                 end
                 
-            end, data.vehicle.plate)
+            end, data.data.plate)
             break
         end
     end

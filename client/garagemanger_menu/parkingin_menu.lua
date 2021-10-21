@@ -6,14 +6,16 @@ function addParkingMenu(mainMenu)
             for i, v in ipairs(vehicles) do
                 --item = NativeUI.CreateItem(_U('garage_parking_item', v.data.plate), _U('garage_parking_item_desc'))
                 item = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), '~r~Work in Progress')
-                if v.data.vehicle_name ~= nil then
-                    item:RightLabel(v.data.vehicle_name)
+                if v.data.custom_name ~= nil then
+                    item:RightLabel(v.data.custom_name)
                 end
     
                 menu:AddItem(item)
     
                 item.Activated = function(sender, index)
-    
+                    print('TOLL GEMACHT!')
+                    -- check is player not in vehicle!
+                    ESX.Game.DeleteVehicle(v.id)
                 end
     
             end
