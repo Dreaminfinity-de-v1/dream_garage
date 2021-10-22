@@ -10,25 +10,29 @@ function addParkinglist(mainMenu)
         local none = {}
         
 
-        for i, v in ipairs(vehicles) do
+        if #vehicles > 0 then
+            for i, v in ipairs(vehicles) do
 
-            item = NativeUI.CreateItem(_U('garage_parkinglist_item', v.plate), _U('garage_parkinglist_item_desc'))
-            if v.custom_name ~= nil then
-                item:RightLabel(v.custom_name)
-            end
-
-
-            if v.garage_id ~= nil then
-                if items[v.garage_id] == nil then
-                    items[v.garage_id] = {}
+                item = NativeUI.CreateItem(_U('garage_parkinglist_item', v.plate), _U('garage_parkinglist_item_desc'))
+                if v.custom_name ~= nil then
+                    item:RightLabel(v.custom_name)
                 end
-                table.insert( items[v.garage_id], { item = item, data = v } )
-            else
-                table.insert( none, { item = item, data = v } )
+
+
+                if v.garage_id ~= nil then
+                    if items[v.garage_id] == nil then
+                        items[v.garage_id] = {}
+                    end
+                    table.insert( items[v.garage_id], { item = item, data = v } )
+                else
+                    table.insert( none, { item = item, data = v } )
+                end
+        
+                item.Activated = onParkinglistItemClick
             end
-    
-            item.Activated = onParkinglistItemClick
-        end
+        else
+            menu:AddItem(NativeUI.CreateItem(_U('garage_parkinglist_noitem'), _U('garage_parkinglist_noitem_desc')))
+        end     
 
         for _, sort in ipairs(Config.GarageParkinglistSort) do
             if sort == 'config_garages' then

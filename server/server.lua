@@ -40,6 +40,14 @@ ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, c
     cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
 end)
 
+ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb, plate, garage_id)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
+    
+end)
+
+
 ESX.RegisterServerCallback('dream_garage:cmd_giveVehicle', function(src, cb, type, target, data)
     if IsPlayerAceAllowed(src, "dream_garage.giveVehicle") then
         
@@ -62,6 +70,5 @@ ESX.RegisterServerCallback('dream_garage:cmd_giveVehicle', function(src, cb, typ
         cb(false)
     end
 end)
-
 
 

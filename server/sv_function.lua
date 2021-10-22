@@ -28,19 +28,22 @@ function getOwnedVehicles(license)
     return result
 end
 
-function getVehicleByPlate(license, plate)
+function getVehicleByPlate(plate)
     local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle` WHERE `plate` = @plate', {['@plate'] = plate})
 
     if #vehicles >= 1 then
         vehicles[1].data = json.decode(vehicles[1].data)
         vehicles[1].data.plate = vehicles[1].plate
 
-        for i,v in ipairs(vehicles) do 
-            print(i)
-            for k2, v2 in pairs(v) do
-                print(k2)
-                print(v2)
-                print('------')
+        
+        if Config.Debugmode.enable == true then
+            for i,v in ipairs(vehicles) do 
+                print(i)
+                for k2, v2 in pairs(v) do
+                    print(k2)
+                    print(v2)
+                    print('------')
+                end
             end
         end
         return vehicles[1]
@@ -69,10 +72,10 @@ function setVehicleGarage(plate, garage)
 end
 
 function setVehicleOutparking(license, plate)
-    local vehicle = getVehicleByPlate(license, plate)
+    local vehicle = getVehicleByPlate(plate)
     
     if vehicle == nil then
-        return 'not_found'
+        return 'not_allowed'
     end
     
     if vehicle.owner ~= license then
@@ -84,6 +87,32 @@ function setVehicleOutparking(license, plate)
     end
  
     if setVehicleGarage(plate, nil) ~= true then
+        return 'database'
+    end
+
+    return 'ok'
+end
+
+function setVehicleInparking(license, plate, garage_id)
+    local vehicle = getVehicleByPlate(plate)
+    
+    if vehicle == nil then
+        return 'not_allowed'
+    end
+
+    if garage_id == nil then
+        return 'garage_null'
+    end
+    
+    if vehicle.owner ~= license then
+        return 'not_allowed'
+    end
+
+    if vehicle.garage_id ~= nil then
+        return 'already_in'
+    end
+ 
+    if setVehicleGarage(plate, garage_id) ~= true then
         return 'database'
     end
 

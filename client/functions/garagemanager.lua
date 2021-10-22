@@ -30,7 +30,7 @@ function getVehicleinParkingarea()
     return vehicles
 end
 
-function getVehicleinParkingareaOwnedVehicles(cb)
+function getOwnedVehiclesInParkingarea(cb, vehicle_types, plate)
     
     ESX.TriggerServerCallback('dream_garage:getOwnedVehicles', function(vehicles)
         local nearestVehicles = getVehicleinParkingarea()
@@ -38,12 +38,28 @@ function getVehicleinParkingareaOwnedVehicles(cb)
         for i, v in ipairs(nearestVehicles) do
             for i2, v2 in ipairs(vehicles) do
                 if GetVehicleNumberPlateText(v) == v2.plate then
-                    table.insert( result, { id = v, data = v2 } )
+                    for i3, v3 in ipairs(vehicle_types) do
+                        if v2.type == v3 then
+                            if v2.data.model == GetEntityModel(v) then
+                                if plate ~= nil and v2.plate == plate then
+                                    cb({ id = v, data = v2 })
+                                    return
+                                else
+                                    table.insert( result, { id = v, data = v2 } )
+                                end
+                                break
+                            end
+                        end
+                    end
                 end
             end
         end
 
-        cb(result)
+        if plate == nil then
+            cb(result)
+        else
+            cb(nil)
+        end
     end)
 
 end
@@ -57,10 +73,11 @@ function getOwnedVehiclesInGarage(cb, garage_id, garage_types)
             local result = {}
 
             if garage_types ~= nil then
-                for i,v in ipairs(garage_types) do
-                    for i2, v2 in ipairs(vehicles) do
-                        if garage_id == v2.garage_id and v == v2.type then
-                            table.insert( result, v2 )
+                for _, v in ipairs(vehicles) do
+                    for _, v2 in ipairs(garage_types) do
+                        if garage_id == v.garage_id and v2 == v.type then
+                            table.insert( result, v )
+                            break
                         end
                     end
                 end
@@ -79,6 +96,4 @@ function getOwnedVehiclesInGarage(cb, garage_id, garage_types)
     else
         cb({})
     end
-
 end
-

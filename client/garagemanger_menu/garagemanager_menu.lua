@@ -13,7 +13,10 @@ function openGaragemanagerMenu()
     Citizen.Wait(250)
 
     menuPool:RefreshIndex()
-    menuPool:MouseEdgeEnabled(false)
+
+    menuPool:ControlDisablingEnabled(false)
+    menuPool:MouseControlsEnabled(false)
+
     mainMenu:Visible(true)
 
     mainMenu.OnMenuClosed = function (menu)

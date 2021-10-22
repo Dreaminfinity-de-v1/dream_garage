@@ -11,28 +11,37 @@ Locales['en'] = {
   ['garage_parkingout_titel'] = "Parking Out",
   ['garage_parkinglist_titel'] = "Vehicle List",
 
+  ['garage_parkinglist_noitem'] = "~r~No owned vehicle",
+  ['garage_parkinglist_noitem_desc'] = "",
   ['garage_parkinglist_item'] = "[%s]",
   ['garage_parkinglist_item_desc'] = "Enter for change vehicle name ~r~WorkInProgress",
   ['garage_parkinglist_item_out-of-garage'] = "~o~Out of garage",
   ['garage_parkinglist_item_unknown-garage'] = "~r~Unknown garage: %s",
 
   ['garage_parkingin_item'] = "[%s]",
-  ['garage_parkingin_item_desc'] = "Enter for parking! ~r~WorkInProgress",
+  ['garage_parkingin_item_desc'] = "Enter for parking!",
   ['garage_parkingin_noitem'] = "~r~No owned vehicle",
   ['garage_parkingin_noitem_desc'] = "Drive your vehicle in area",
   
   ['garage_parkingout_item'] = "[%s]",
-  ['garage_parkingout_item_desc'] = "Enter for parking! ~r~WorkInProgress",
+  ['garage_parkingout_item_desc'] = "Enter for parking out!",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
 
   ['notifications_titel'] = "Garagemanager",
+  ['notification_message_parking_not_allowed'] = "Do not allowed!",
+  ['notification_message_parking_database'] = "Error: DBase",
+  ['notification_message_parking_attempt-error'] = "Vehicle is removing...",
+
   ['notification_message_parkingout'] = "Vehicle parked out!",
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",
-  ['notification_message_parkingout_not_found'] = "Car not found",
-  ['notification_message_parkingout_not_allowed'] = "Do not allowed!",
   ['notification_message_parkingout_already_out'] = "Car already out",
-  ['notification_message_parkingout_database'] = "Error: DBase",
+
+  ['notification_message_parkingin_in-the-vehicle'] = "You're in this Vehicle",
+  ['notification_message_parkingin'] = "Vehicle is in the Garage",
+  ['notification_message_parkingin_already_in'] = "Car already in",
+  ['notification_message_parkingin_not-in-area'] = "Car not in a parking area",
+
   ['notification_message_parkingout_debug_spawnpoint'] = "Debug_Plate: %s | Spawnring: %s",
   ['notification_message_parkingout_debug_spawnpoint2'] = "Debug_Garagename: %s",
   ['notification_message_parkingout_debug_getVehicleinParkingarea'] = "Debug_Plate: %s",

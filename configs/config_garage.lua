@@ -29,6 +29,8 @@ Config.Garages = {
         id = 'garage_legion_square',
         name = "Legion Square Garage",
         vehicle_types = {
+            'truck',
+            'car',
             'car',
         },
         parking = {

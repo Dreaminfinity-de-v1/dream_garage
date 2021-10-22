@@ -24,17 +24,16 @@ Config.Notification = {
         success = "green",
         negative = "red",
         warn = "yellow",
+        wait = "blue",
         debug = "orange",
     },
     icons = {
-        debug = 'mdi-bug',
-        default = 'mdi-garage-variant',
-        parkingout = 'mdi-garage-open',
-        --parkingin = 'mdi-garage',
-        not_allowed = 'mdi-garage-alert',
-        already_out = 'mdi-garage-alert',
-        not_found = 'mdi-garage-alert',
+        car_wait = 'mdi-autorenew',
+        garage_open = 'mdi-garage-open',
+        garage_close = 'mdi-garage',
+        garage_warn = 'mdi-garage-alert',
         database = 'mdi-database-alert',
+        debug = 'mdi-bug'
     },
 }
 
@@ -45,6 +44,6 @@ Config.Debugmode = {
         yellow = false,
         red = false,
     },
-    notification = true,
+    notification = false,
 }
 

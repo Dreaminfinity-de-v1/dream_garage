@@ -35,7 +35,9 @@ RegisterNetEvent('dream_garage:cmd_giveVehicle', function(_type, _model, _target
             FreezeEntityPosition(vehicle, true)
 			SetEntityCollision(vehicle, false)
             
-            print('Übergebene Plate: ['..plate..']')
+            if Config.Debugmode.enable == true then
+                print('Übergebene Plate: ['..plate..']')
+            end
             ESX.Game.SetVehicleProperties(vehicle, {
                 plate = plate,
                 fuelLevel = 100,
@@ -46,8 +48,11 @@ RegisterNetEvent('dream_garage:cmd_giveVehicle', function(_type, _model, _target
             })
 
             local data = ESX.Game.GetVehicleProperties(vehicle)
-            print('Gesetzte Plate: ['..data.plate..']')
-            --check vehicletype
+            data.plate = GetVehicleNumberPlateText(vehicle)
+
+            if Config.Debugmode.enable == true then
+                print('Gesetzte Plate: ['..data.plate..']')
+            end
             ESX.Game.DeleteVehicle(vehicle)
 
             if Config.VehicleTypes[type] == nil then
@@ -85,17 +90,4 @@ RegisterNetEvent('dream_garage:cmd_giveVehicle', function(_type, _model, _target
             args = {_U('notifications_titel'), _U('cmd_giveVehicle_invalid-model')}
         })
 	end
-
-
 end)
-
-
-
-
---[[
-    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),'Erfolgreich du Affe',
-            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.parkingout)
-
-
-    
-]]

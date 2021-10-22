@@ -22,7 +22,9 @@ function addParkingoutMenu(mainMenu)
                 local _garage = garage
 
                 menu.OnItemSelect = function(sender, _item, index)
-                    onParkingoutItemClick(_item.data, _garage, sender, index, menu)
+                    if _item ~= nil and _item.data ~= nil then
+                        onParkingoutItemClick(_item.data, _garage, sender, index, menu)
+                    end
                 end
                 
             end
@@ -53,7 +55,7 @@ function onParkingoutItemClick(_data, garage, sender, _index, _menu)
 
                     ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout'),
-                            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.parkingout)
+                            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_open)
                         ESX.Game.SetVehicleProperties(vehicle, data.data)
                         Citizen.CreateThread(function ()
                             local blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)
@@ -82,19 +84,15 @@ function onParkingoutItemClick(_data, garage, sender, _index, _menu)
                     end
 
                 elseif error == 'not_allowed' then
-                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_not_allowed'),
-                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.not_allowed)
+                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_not_allowed'),
+                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
 
                 elseif error == 'already_out' then
                     TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_already_out'),
-                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.already_out)
-
-                elseif error == 'not_found' then
-                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_not_found'),
-                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.not_found)
+                        Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
 
                 elseif error == 'database' then
-                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_database'),
+                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_database'),
                         Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
                 else
                     TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),"ERROR: " .. error,
@@ -109,7 +107,7 @@ function onParkingoutItemClick(_data, garage, sender, _index, _menu)
 
     if not found then
         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout_nofreeparkarea'),
-            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.default)
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_close)
     end
 
 end
