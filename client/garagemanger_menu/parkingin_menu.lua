@@ -1,3 +1,5 @@
+menuclick_wait = false
+
 function addParkingMenu(mainMenu)
     local garage = getGarageFromId(interactionArea)
     local menu = menuPool:AddSubMenu(mainMenu, _U('garage_parkingin_titel'))
@@ -16,7 +18,20 @@ function addParkingMenu(mainMenu)
                 local _garage = garage
 
                 menu.OnItemSelect = function(sender, _item, index)
+                    
                     if _item ~= nil and _item.data ~= nil then
+                        if menuclick_wait == true then
+                            TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_wait-info'),
+                                Config.Notification.pos,1,Config.Notification.color.wait,'white',true,Config.Notification.icons.car_wait)
+                            return
+                        end
+    
+                        menuclick_wait = true
+                        Citizen.CreateThread(function()
+                            Citizen.Wait(500)
+                            menuclick_wait = false
+                        end)
+
                         onParkinginItemClick(_item.data, _garage, sender, index, menu)
                     end
                 end
@@ -56,7 +71,7 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
 
 
                     elseif error == 'not_allowed' then
-                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_not_allowed'),
+                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_not_allowed'),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
 
                     elseif error == 'already_in' then
@@ -67,7 +82,7 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
 
 
                     elseif error == 'database' then
-                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_database'),
+                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_database'),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
                     else
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),"ERROR: " .. error,
@@ -95,7 +110,7 @@ function deleteVehicle(data, menu, index)
         Citizen.Wait(100)
         NetworkRequestControlOfEntity(data.id)
         if attempt % 10 == 0 then
-            TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_attempt-error'),
+            TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_attempt-info'),
                 Config.Notification.pos,1,Config.Notification.color.wait,'white',true,Config.Notification.icons.car_wait)
         end
         attempt = attempt + 1
@@ -113,7 +128,7 @@ function deleteVehicle(data, menu, index)
         return true
     else
         ESX.TriggerServerCallback('dream_garage:setVehicleOutparking', function(error) end, data.data.plate)
-        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parking_not_allowed'),
+        TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_not_allowed'),
             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
     end
 

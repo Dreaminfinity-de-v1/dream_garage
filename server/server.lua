@@ -71,4 +71,28 @@ ESX.RegisterServerCallback('dream_garage:cmd_giveVehicle', function(src, cb, typ
     end
 end)
 
+ESX.RegisterServerCallback('dream_garage:setVehicleCustomename', function(src, cb, plate, custom_name)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    local error = setOwnedVehicleCustomeName(xPlayer.getIdentifier(), plate, custom_name)
+
+
+    if error == 'ok' then
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_rename'),
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_open)
+        cb()
+    elseif error == 'not_allowed' then
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+
+    elseif error == 'database' then
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_database'),
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
+    else
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),"ERROR: " .. error,
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
+        
+    end
+end)
+
 

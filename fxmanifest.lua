@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Garage von Grewo - Dreaminfinity.de'
 
-version '0.1.0-beta'
+version '0.2.0-beta'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
@@ -55,4 +55,5 @@ dependencies {
 	'es_extended',
 	'NativeUILua',
 	'mysql-async',
+	'zf_dialog',
 }

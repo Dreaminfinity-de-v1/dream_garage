@@ -1,8 +1,5 @@
 local letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }
 
-
-
-
 function getAllVehicles()
     local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle`', {})
 
@@ -251,4 +248,39 @@ function setVehicle(type, target, data)
 
     return false
 
+end
+
+function setVehicleCustomeName(plate, custom_name)
+    local result = 0
+
+    if custom_name ~= nil then
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `custom_name` = @custom_name WHERE `plate` = @plate" , {
+            ['@custom_name'] = custom_name,
+            ['@plate'] = plate,
+        })
+    else
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `custom_name` = NULL WHERE `plate` = @plate" , {
+            ['@plate'] = plate,
+        })
+    end
+    
+    if result >= 1 then
+        return true
+    end
+
+    return false
+end
+
+function setOwnedVehicleCustomeName(license, plate, custom_name)
+    local vehicle = getVehicleByPlate(plate)
+
+    if vehicle.owner ~= license then
+        return 'not_allowed'
+    end
+ 
+    if setVehicleCustomeName(plate, custom_name) ~= true then
+        return 'database'
+    end
+
+    return 'ok'
 end

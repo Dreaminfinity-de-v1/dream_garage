@@ -24,14 +24,19 @@ Locales['en'] = {
   ['garage_parkingin_noitem_desc'] = "Drive your vehicle in area",
   
   ['garage_parkingout_item'] = "[%s]",
+  ['garage_parkingout_item_custom'] = "[%s] - %s",
   ['garage_parkingout_item_desc'] = "Enter for parking out!",
+  ['garage_parkingout_item_parkingout'] = "Park out vehicle",
+  ['garage_parkingout_item_rename'] = "Rename vehicle",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
 
   ['notifications_titel'] = "Garagemanager",
-  ['notification_message_parking_not_allowed'] = "Do not allowed!",
-  ['notification_message_parking_database'] = "Error: DBase",
-  ['notification_message_parking_attempt-error'] = "Vehicle is removing...",
+  ['notification_message_not_allowed'] = "Do not allowed!",
+  ['notification_message_database'] = "Error: DBase",
+  ['notification_message_parking_attempt-info'] = "Vehicle is removing...",
+  ['notification_message_wait-info'] = "Please wait...",
+  ['notification_message_rename'] = "Do you change the Vehiclename",
 
   ['notification_message_parkingout'] = "Vehicle parked out!",
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",
@@ -61,6 +66,11 @@ Locales['en'] = {
   ['cmd_giveVehicle_plateisnil'] = "ERROR - PLATE IS NIL!",
   ['cmd_giveVehicle_wrong-user'] = "The user doesn't exists!",
   ['cmd_giveVehicle_wrong-type'] = "The type doesn't exists!",
+
+  ['input_submit'] = "Submit",
+  ['input_cancel'] = "Cancel",
+  ['input_rename_titel'] = "Change Car Name",
+  ['input_rename_inputfield'] = "Tipe your new name here",
 }
 
 
