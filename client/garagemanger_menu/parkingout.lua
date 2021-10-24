@@ -9,6 +9,9 @@ function addParkingoutMenu(mainMenu)
         if #vehicles > 0 then
 
             for i, v in ipairs(vehicles) do
+
+
+                
                 local submenu = menuPool:AddSubMenu(menu, _U('garage_parkingout_item', v.plate))
 
                 if v.custom_name ~= nil then
@@ -17,8 +20,8 @@ function addParkingoutMenu(mainMenu)
                     
                 end
 
-                local parkingout =  NativeUI.CreateItem(_U('garage_parkingout_item_parkingout'), _U('garage_parkingout_item_desc'))
-                local rename =  NativeUI.CreateItem(_U('garage_parkingout_item_rename'), _U('garage_parkingout_item_desc'))
+                local parkingout =  NativeUI.CreateItem(_U('garage_parkingout_item_parkingout'), _U('garage_parkingout_item_parkingout_desc'))
+                local rename =  NativeUI.CreateItem(_U('garage_parkingout_item_rename'), _U('garage_parkingout_item_rename_desc'))
 
                 submenu.data = v
 

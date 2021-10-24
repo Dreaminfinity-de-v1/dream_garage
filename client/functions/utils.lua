@@ -1,7 +1,12 @@
 function getGarageFromId(id)
-    for i, k in ipairs(Config.Garages) do
-        if k.id == id then
-            return k
+    for i, v in ipairs(Config.Garages) do
+        if v.id == id then
+            return v
+        end
+    end
+    for i, v in ipairs(Config.Towingyards) do
+        if v.id == id then
+            return v
         end
     end
 end

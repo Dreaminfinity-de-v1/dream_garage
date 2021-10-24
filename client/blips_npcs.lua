@@ -25,19 +25,21 @@ Citizen.CreateThread(function()
 
 	end
 
-    blips['towyards'] = {}
-    for k, v in pairs(Config.Towyards) do
+    blips['towingyards'] = {}
+    for i, v in ipairs(Config.Towingyards) do
 
         -- Blips
         if v.blip ~= nil then
-            blips['towyards'][k] = createBlip(v.parking_pos, v.blip.sprite or 68, v.blip.display, v.blip.color or 17, v.blip.scale, v.blip.titel or _U('towyard_blip_name'))
+            blips['towingyards'][v.id] = createBlip(v.blip.pos, v.blip.sprite or 68, v.blip.display, v.blip.color or 17, v.blip.scale, v.blip.titel or _U('towingyard_blip_name'))
         end
 
         -- NPCs
-        spawnNPC(v.towyardmanager.type, v.towyardmanager.model, v.towyardmanager.pos, v.towyardmanager.heading)
+        spawnNPC(v.towingyardmanager.type, v.towingyardmanager.model, v.towingyardmanager.pos, v.towingyardmanager.heading)
 
         -- Debug - Blip Parkingin Zones
-        createDebugBlipForRadius(v.parking_pos, v.parking_radius)
+        for i2, v2 in ipairs(v.parking) do
+            createDebugBlipForRadius(v2.pos, v2.radius)
+        end
 	end
 end)
 
@@ -112,6 +114,20 @@ Citizen.CreateThread(function()
     while Config.Debugmode.enable == true and (Config.Debugmode.marker.yellow or Config.Debugmode.marker.red) do
         Citizen.Wait(0)
         for i, v in ipairs(Config.Garages) do
+            if Config.Debugmode.marker.yellow then
+                for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
+                    DrawMarker(28, v2.coords.x, v2.coords.y, v2.coords.z, 0, 0, 0, 0, 0, 0,
+                        v2.radius + 0.0, v2.radius + 0.0, v2.radius + 0.0, 255, 255, 0, 100, 0, 0, 0, 0)
+                end
+            end
+            if Config.Debugmode.marker.red then
+                for i2, v2 in ipairs(v.parking) do
+                    DrawMarker(28, v2.pos.x, v2.pos.y, v2.pos.z, 0, 0, 0, 0, 0, 0,
+                        v2.radius + 0.0, v2.radius + 0.0, v2.radius + 0.0, 255, 0, 0, 100, 0, 0, 0, 0)
+                end
+            end
+        end
+        for i, v in ipairs(Config.Towingyards) do
             if Config.Debugmode.marker.yellow then
                 for i2, v2 in ipairs(v.garagemanager.spawnpoints) do
                     DrawMarker(28, v2.coords.x, v2.coords.y, v2.coords.z, 0, 0, 0, 0, 0, 0,

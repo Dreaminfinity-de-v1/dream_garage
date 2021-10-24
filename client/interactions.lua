@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
 		local playerPed = PlayerPedId()
 		local PlayerCoords    = GetEntityCoords(playerPed)
 
-        for i, v in pairs(Config.Garages) do
+        for i, v in ipairs(Config.Garages) do
             continue = true
             local distance  = GetDistanceBetweenCoords(PlayerCoords, v.garagemanager.pos, true)
             if distance <= (v.garagemanager.radius or 2) then
@@ -38,14 +38,14 @@ Citizen.CreateThread(function()
             end
         end
     
-        for k, v in pairs(Config.Towyards) do
+        for i, v in ipairs(Config.Towingyards) do
             continue = true
-            local distance  = GetDistanceBetweenCoords(PlayerCoords, v.towyardmanager.pos, true)
-            if distance <= v.towyardmanager.radius then
+            local distance  = GetDistanceBetweenCoords(PlayerCoords, v.towingyardmanager.pos, true)
+            if distance <= v.towingyardmanager.radius then
                 isIn = true
-                area = k
-                part = 'towyardmanager'
-                MSG = _U('help_notification_towyard')
+                area = v.id
+                part = 'towingyardmanager'
+                MSG = _U('help_notification_towingyard')
                 break
             end
         end
@@ -93,9 +93,9 @@ Citizen.CreateThread(function ()
                     Citizen.CreateThread(function()
                         openGaragemanagerMenu()
                     end)
-                elseif interactionPart == 'towyardmanager' then
+                elseif interactionPart == 'towingyardmanager' then
                     Citizen.CreateThread(function()
-                        openTowyardmanagerMenu()
+                        openTowingyardmanagerMenu()
                     end)
                 end
 

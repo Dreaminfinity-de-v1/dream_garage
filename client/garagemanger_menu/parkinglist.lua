@@ -46,6 +46,17 @@ function addParkinglist(mainMenu)
                         items[v.id] = nil
                     end
                 end
+            elseif sort == 'config_towingyards' then
+                for i, v in ipairs(Config.Towingyards) do
+                    if items[v.id] ~= nil then
+                        submenu = menuPool:AddSubMenu(menu, v.name)
+                        for k, v in pairs(items[v.id]) do
+                            submenu:AddItem(v.item)
+                        end
+        
+                        items[v.id] = nil
+                    end
+                end
             elseif sort == 'unknown_garages' then
                 for k, v in pairs(items) do
                     if #v > 0 and v[1].data.garage_id ~= nil then

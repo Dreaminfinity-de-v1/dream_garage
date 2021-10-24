@@ -2,9 +2,11 @@ Locales['en'] = {
   ['garage_blip_name'] = "Garage",
   ['help_notification_garage'] = "press ~INPUT_CONTEXT~ to open the ~y~Garage Menu~s~.",
 
-  ['towyard_blip_name'] = "Towyard",
-  ['help_notification_towyard'] = "press ~INPUT_CONTEXT~ to open the ~y~Towyard Menu~s~.",
+  ['towingyard_blip_name'] = "Towingyard",
+  ['help_notification_towingyard'] = "press ~INPUT_CONTEXT~ to open the ~y~Towingyard Menu~s~.",
   
+
+-- Garagemanager --
   ['garagemenu_titel'] = "Garage Menu",
   ['garagemenu_subtitel'] = "Garage: %s",
   ['garage_parkingin_titel'] = "Parking In",
@@ -14,7 +16,7 @@ Locales['en'] = {
   ['garage_parkinglist_noitem'] = "~r~No owned vehicle",
   ['garage_parkinglist_noitem_desc'] = "",
   ['garage_parkinglist_item'] = "[%s]",
-  ['garage_parkinglist_item_desc'] = "Enter for change vehicle name ~r~WorkInProgress",
+  ['garage_parkinglist_item_desc'] = "",
   ['garage_parkinglist_item_out-of-garage'] = "~o~Out of garage",
   ['garage_parkinglist_item_unknown-garage'] = "~r~Unknown garage: %s",
 
@@ -25,18 +27,35 @@ Locales['en'] = {
   
   ['garage_parkingout_item'] = "[%s]",
   ['garage_parkingout_item_custom'] = "[%s] - %s",
-  ['garage_parkingout_item_desc'] = "Enter for parking out!",
   ['garage_parkingout_item_parkingout'] = "Park out vehicle",
+  ['garage_parkingout_item_parkingout_desc'] = "Enter for parking out!",
   ['garage_parkingout_item_rename'] = "Rename vehicle",
+  ['garage_parkingout_item_rename_desc'] = "Enter for change Vehiclename",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
 
+
+  -- Towingyardmanager --
+    ['towingyardmenu_titel'] = "Towingyard Menu",
+    ['towingyardmenu_subtitel'] = "Towingyard: %s",
+    ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",
+    ['towingyard_release_titel'] = "Towingyard Vehicles",
+    ['towingyard_release_item'] = "[%s]",
+    ['towingyard_release_item_desc'] = "Enter to trigger for 250$",
+    ['towingyard_release_noitem'] = "~r~No owned vehicle",
+    ['towingyard_release_noitem_desc'] = "You don't have any vehicles here!",
+
+
+-- Notifications --
   ['notifications_titel'] = "Garagemanager",
+  ['notifications_towingyard_titel'] = "Towingyard",
+  ['notification_message_not-enough-money'] = "You haven't enough money",
   ['notification_message_not_allowed'] = "Do not allowed!",
   ['notification_message_database'] = "Error: DBase",
   ['notification_message_parking_attempt-info'] = "Vehicle is removing...",
   ['notification_message_wait-info'] = "Please wait...",
-  ['notification_message_rename'] = "Do you change the Vehiclename",
+  ['notification_message_rename'] = "You changed the Vehiclename",
+  ['notification_message_release'] = "You trigger the Vehicle for 250$",
 
   ['notification_message_parkingout'] = "Vehicle parked out!",
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",
@@ -51,6 +70,13 @@ Locales['en'] = {
   ['notification_message_parkingout_debug_spawnpoint2'] = "Debug_Garagename: %s",
   ['notification_message_parkingout_debug_getVehicleinParkingarea'] = "Debug_Plate: %s",
 
+  ['input_submit'] = "Submit",
+  ['input_cancel'] = "Cancel",
+  ['input_rename_titel'] = "Change Car Name",
+  ['input_rename_inputfield'] = "Tipe your new name here",
+
+
+-- Command --
   ['nopermissions'] = "You don't have any permissions for %s!",
   ['cmd_giveVehicle'] = "The vehicle is in the garage.",
   ['cmd_giveVehicle_usage'] = "Usage: /%s <type> <model> [player] [0|1|2] [plate]",
@@ -66,11 +92,6 @@ Locales['en'] = {
   ['cmd_giveVehicle_plateisnil'] = "ERROR - PLATE IS NIL!",
   ['cmd_giveVehicle_wrong-user'] = "The user doesn't exists!",
   ['cmd_giveVehicle_wrong-type'] = "The type doesn't exists!",
-
-  ['input_submit'] = "Submit",
-  ['input_cancel'] = "Cancel",
-  ['input_rename_titel'] = "Change Car Name",
-  ['input_rename_inputfield'] = "Tipe your new name here",
 }
 
 

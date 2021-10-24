@@ -13,10 +13,11 @@
 Config.GarageParkinglistSort = {
     'out_of_garages',
     'config_garages',
+    'config_towingyards',
     'unknown_garages',
 }
 
-Config.VehicleTypes = { -- and Default Garages
+Config.DefaultGarages = { -- and Default Garages
     car         = "garage_legion_square", -- Cars, Bikes
     truck       = "none", -- LKWs, Trailers
     boat        = "none", -- Boats, Submarines
@@ -29,8 +30,6 @@ Config.Garages = {
         id = 'garage_legion_square',
         name = "Legion Square Garage",
         vehicle_types = {
-            'truck',
-            'car',
             'car',
         },
         parking = {

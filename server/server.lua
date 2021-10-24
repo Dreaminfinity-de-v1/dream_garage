@@ -33,7 +33,6 @@ ESX.RegisterServerCallback('dream_garage:getOwnedVehicles', function(src, cb)
     cb(getOwnedVehicles(xPlayer.getIdentifier()))
 end)
 
-
 ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(src)
 
@@ -47,11 +46,10 @@ ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb,
     
 end)
 
-
 ESX.RegisterServerCallback('dream_garage:cmd_giveVehicle', function(src, cb, type, target, data)
     if IsPlayerAceAllowed(src, "dream_garage.giveVehicle") then
         
-        if Config.VehicleTypes[type] == nil then
+        if Config.DefaultGarages[type] == nil then
             TriggerClientEvent('chat:addMessage', src, {
                 color = { 255, 0, 0},
                 multiline = true,
@@ -79,7 +77,7 @@ ESX.RegisterServerCallback('dream_garage:setVehicleCustomename', function(src, c
 
     if error == 'ok' then
         TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_rename'),
-            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_open)
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_warn)
         cb()
     elseif error == 'not_allowed' then
         TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
@@ -95,4 +93,23 @@ ESX.RegisterServerCallback('dream_garage:setVehicleCustomename', function(src, c
     end
 end)
 
+ESX.RegisterServerCallback('dream_garage:hasEnoughMoney', function(src, cb)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    cb(checkImpoundMoney(src))
+end)
+
+ESX.RegisterServerCallback('dream_garage:getTowingyardVehicles', function(src, cb, vehicle_plates)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    if xPlayer.getJob().name == Config.TowingyardJob then
+        cb(getTowingyardVehicles(vehicle_plates))
+        
+    else
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
+            Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+        cb({})
+
+    end
+end)
 

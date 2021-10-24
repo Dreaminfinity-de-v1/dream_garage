@@ -55,7 +55,7 @@ RegisterNetEvent('dream_garage:cmd_giveVehicle', function(_type, _model, _target
             end
             ESX.Game.DeleteVehicle(vehicle)
 
-            if Config.VehicleTypes[type] == nil then
+            if Config.DefaultGarages[type] == nil then
                 TriggerEvent('chat:addMessage', {
                     color = { 255, 0, 0},
                     multiline = true,

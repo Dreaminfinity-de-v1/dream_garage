@@ -14,10 +14,16 @@ server_scripts {
 
 	'configs/config.lua',
 	'configs/config_garage.lua',
-	'configs/config_towyard.lua',
+	'configs/config_towingyard.lua',
 
-	'server/sv_function.lua',
+	'server/functions/sv_garagemanager.lua',
+	'server/functions/sv_main_get.lua',
+	'server/functions/sv_main_is.lua',
+	'server/functions/sv_main_set.lua',
+	'server/functions/sv_plate.lua',
+
 	'server/server.lua',
+	'server/functions/sv_towingyardmanager.lua',
 	'server/sv_commands.lua',
 }
 
@@ -29,7 +35,7 @@ client_scripts {
 
 	'configs/config.lua',
 	'configs/config_garage.lua',
-	'configs/config_towyard.lua',
+	'configs/config_towingyard.lua',
 
 	'client/client.lua',
 	'client/blips_npcs.lua',
@@ -38,16 +44,18 @@ client_scripts {
 	'client/functions/utils.lua',
 	'client/functions/command.lua',
 	'client/functions/garagemanager.lua',
-	'client/functions/towyardmanager.lua',
+	'client/functions/towingyardmanager.lua',
 
 	'client/functions/give_vehicle.lua',
 
-	'client/garagemanger_menu/garagemanager_menu.lua',
-	'client/garagemanger_menu/parkingin_menu.lua',
-	'client/garagemanger_menu/parkingout_menu.lua',
-	'client/garagemanger_menu/parkinglist_menu.lua',
+	'client/garagemanger_menu/garagemanager.lua',
+	'client/garagemanger_menu/parkingin.lua',
+	'client/garagemanger_menu/parkingout.lua',
+	'client/garagemanger_menu/parkinglist.lua',
 
-	'client/towyardmanager_menu/towyardmanager_menu.lua',
+	'client/towingyardmanager_menu/towingyardmanager.lua',
+	'client/towingyardmanager_menu/addtowingyardrelease.lua',
+	'client/towingyardmanager_menu/towingyardmenu.lua',
 
 }
 

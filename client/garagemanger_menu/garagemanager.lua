@@ -2,7 +2,6 @@ function openGaragemanagerMenu()
 
 
     mainMenu = NativeUI.CreateMenu(_U('garagemenu_titel'),_U('garagemenu_subtitel', getGarageFromId(interactionArea).name))
-
     menuPool:Add(mainMenu)
 
     

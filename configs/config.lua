@@ -13,6 +13,11 @@ Config.RandomPlateSchemes = {
     grade_1 = "AAA 1234", -- other Default Value
 }
 
+Config.TowingyardJob = 'mechanic'
+Config.ImpoundPrice = 250
+Config.ImpounderPayWithBank = true
+Config.ImpounderPayWithCash = true
+
 Config.Commands = {
     give_vehicle = 'givevehicle',
 }
@@ -38,11 +43,11 @@ Config.Notification = {
 }
 
 Config.Debugmode = {
-    enable = false,
+    enable = true,
     blips = true,
     marker = {
         yellow = false,
-        red = false,
+        red = true,
     },
     notification = false,
 }
