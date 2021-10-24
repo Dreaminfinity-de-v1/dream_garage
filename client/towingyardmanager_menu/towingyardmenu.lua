@@ -30,7 +30,7 @@ function addTowingyardMenu(menu)
                             menuclick_wait = false
                         end)
 
-                        --onParkinginItemClick(_item.data, _garage, sender, index, menu)
+                        --onParkinginTowingyardItemClick(_item.data, _garage, sender, index, menu)
                     end
                 end
     
@@ -42,7 +42,7 @@ function addTowingyardMenu(menu)
 end
 
 
-function onParkinginItemClick(_data, garage, sender, _index, _menu)
+function onParkinginTowingyardItemClick(_data, garage, sender, _index, _menu)
 
     local data = _data
     local menu = _menu
@@ -57,7 +57,7 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
                 ESX.TriggerServerCallback('dream_garage:setVehicleInparking', function(error)
 
                     if error == 'ok' then
-                        if deleteVehicle(data, menu, index) == true then
+                        if deleteTowingyardVehicle(data, menu, index) == true then
                             TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingin'),
                                 Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_close)
                         end
@@ -97,7 +97,7 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
 end
 
 
-function deleteVehicle(data, menu, index)
+function deleteTowingyardVehicle(data, menu, index)
     local attempt = 0
 
     while not NetworkHasControlOfEntity(data.id) and attempt < 20 and DoesEntityExist(data.id) do
