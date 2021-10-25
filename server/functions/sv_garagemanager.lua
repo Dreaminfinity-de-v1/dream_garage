@@ -1,11 +1,11 @@
-function setVehicleOutparking(license, plate)
+function setVehicleOutparking(license, plate, allowed)
     local vehicle = getVehicleByPlate(plate)
     
     if vehicle == nil then
         return 'not_allowed'
     end
     
-    if vehicle.owner ~= license then
+    if vehicle.owner ~= license and not allowed then
         return 'not_allowed'
     end
 
@@ -20,7 +20,7 @@ function setVehicleOutparking(license, plate)
     return 'ok'
 end
 
-function setVehicleInparking(license, plate, garage_id)
+function setVehicleInparking(license, plate, garage_id, allowed)
     local vehicle = getVehicleByPlate(plate)
     
     if vehicle == nil then
@@ -31,7 +31,7 @@ function setVehicleInparking(license, plate, garage_id)
         return 'garage_null'
     end
     
-    if vehicle.owner ~= license then
+    if vehicle.owner ~= license and not allowed then
         return 'not_allowed'
     end
 

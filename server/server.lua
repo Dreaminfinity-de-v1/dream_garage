@@ -36,13 +36,47 @@ end)
 ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(src)
 
-    cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
+    if xPlayer.getJob().name == Config.TowingyardJob then
+        local vehicle = getVehicleByPlate(plate)
+        local found = false
+        for i,v in ipairs(Config.Towingyards) do
+            if v.id == vehicle.garage_id then
+                found = true
+                cb(setVehicleOutparking(xPlayer.getIdentifier(), plate, true))
+            end
+        end
+
+        if found ~= true then
+            TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
+                Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+        end
+        
+    else
+        cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
+    end
 end)
 
 ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb, plate, garage_id)
     local xPlayer = ESX.GetPlayerFromId(src)
 
-    cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
+    if xPlayer.getJob().name == Config.TowingyardJob then
+        local found = false
+        for i,v in ipairs(Config.Towingyards) do
+            if v.id == garage_id then
+                found = true
+                cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id, true))
+            end
+        end
+
+        if found ~= true then
+            TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
+                Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+        end
+        
+    else
+        cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
+    end
+
     
 end)
 
@@ -108,7 +142,6 @@ ESX.RegisterServerCallback('dream_garage:getTowingyardVehicles', function(src, c
     else
         TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
-        cb({})
 
     end
 end)

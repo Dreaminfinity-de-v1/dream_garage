@@ -6,9 +6,6 @@ function addTowingyardinMenu(menu)
         if #vehicles > 0 then
             for i, v in ipairs(vehicles) do
                 item = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), _U('garage_parkingin_item_desc'))
-                if v.data.custom_name ~= nil then
-                    item:RightLabel(v.data.custom_name)
-                end
 
                 item.data = v
                 menu:AddItem(item)
@@ -30,7 +27,7 @@ function addTowingyardinMenu(menu)
                             menuclick_wait = false
                         end)
 
-                        --onParkinginTowingyardItemClick(_item.data n, _garage, sender, index, menu)
+                        onParkinginTowingyardItemClick(_item.data, _garage, sender, index, menu)
                     end
                 end
     
@@ -51,7 +48,7 @@ function onParkinginTowingyardItemClick(_data, garage, sender, _index, _menu)
     local ped = GetPlayerPed(-1)
     if GetVehiclePedIsIn(ped,false) ~= data.id then
         
-        getOwnedVehiclesInParkingarea(function(vehicle)
+        getTowingyardVehiclesInParkingarea(function(vehicle)
 
             if vehicle ~= nil then
                 ESX.TriggerServerCallback('dream_garage:setVehicleInparking', function(error)
