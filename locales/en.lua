@@ -36,14 +36,14 @@ Locales['en'] = {
 
 
   -- Towingyardmanager --
-    ['towingyardmenu_titel'] = "Towingyard Menu",
-    ['towingyardmenu_subtitel'] = "Towingyard: %s",
-    ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",
-    ['towingyard_release_titel'] = "Towingyard Vehicles",
-    ['towingyard_release_item'] = "[%s]",
-    ['towingyard_release_item_desc'] = "Enter to trigger for 250$",
-    ['towingyard_release_noitem'] = "~r~No owned vehicle",
-    ['towingyard_release_noitem_desc'] = "You don't have any vehicles here!",
+  ['towingyardmenu_titel'] = "Towingyard Menu",
+  ['towingyardmenu_subtitel'] = "Towingyard: %s",
+  ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",
+  ['towingyard_release_titel'] = "Towingyard Vehicles",
+  ['towingyard_release_item'] = "[%s]",
+  ['towingyard_release_item_desc'] = "Enter to trigger for 250$",  --DEBUG
+  ['towingyard_release_noitem'] = "~r~No owned vehicle",
+  ['towingyard_release_noitem_desc'] = "You don't have any vehicles here!",
 
 
 -- Notifications --
@@ -55,7 +55,7 @@ Locales['en'] = {
   ['notification_message_parking_attempt-info'] = "Vehicle is removing...",
   ['notification_message_wait-info'] = "Please wait...",
   ['notification_message_rename'] = "You changed the Vehiclename",
-  ['notification_message_release'] = "You trigger the Vehicle for 250$",
+  ['notification_message_release'] = "You trigger the Vehicle for 250$",  --DEBUG
 
   ['notification_message_parkingout'] = "Vehicle parked out!",
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",
