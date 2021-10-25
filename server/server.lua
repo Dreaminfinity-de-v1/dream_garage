@@ -145,3 +145,11 @@ ESX.RegisterServerCallback('dream_garage:getTowingyardVehicles', function(src, c
 
     end
 end)
+
+AddEventHandler('playerDropped', function (reason)
+    local xPlayers = ESX.GetPlayers()
+
+    if #xPlayers <= 0 then
+        setVehicleInTowingyardByZeroUser()
+    end
+end)

@@ -51,3 +51,18 @@ function setVehicleGarage(plate, garage)
 
     return false
 end
+
+function setVehicleInTowingyardByZeroUser()
+    local xPlayers = ESX.GetPlayers()
+
+    if #xPlayers <= 0 then
+
+        for k, v in pairs(Config.DefaultTowingyards) do
+            MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `garage_id` = @garage_id WHERE `garage_id` = NULL AND `type` = @type", {
+                
+                ['@type'] = k,
+                ['@garage_id'] = v,
+            })
+        end
+    end
+end
