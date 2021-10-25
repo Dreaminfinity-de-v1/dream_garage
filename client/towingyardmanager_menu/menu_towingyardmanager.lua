@@ -5,14 +5,14 @@ function openTowingyardmanagerMenu()
     menuPool:Add(mainMenu)
 
     if playerData.job.name == Config.TowingyardJob then
-        local towingyardMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_towingyardmenu_titel'))
-        addTowingyardMenu(towingyardMenu)
+        local towingyardInMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_towingyardmenu_titel'))
+        addTowingyardinMenu(towingyardInMenu)
 
-        local towingyardRelease = menuPool:AddSubMenu(mainMenu, _U('towingyard_release_titel'))
-        addTowingyardRelease(towingyardRelease)
+        local towingyardOutMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_release_titel'))
+        addTowingyardoutMenu(towingyardOutMenu)
 
     else
-        addTowingyardRelease(mainMenu)
+        addTowingyardoutMenu(mainMenu)
     end
     
     Citizen.Wait(250)

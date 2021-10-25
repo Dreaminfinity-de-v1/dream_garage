@@ -48,14 +48,14 @@ client_scripts {
 
 	'client/functions/give_vehicle.lua',
 
-	'client/garagemanger_menu/garagemanager.lua',
-	'client/garagemanger_menu/parkingin.lua',
-	'client/garagemanger_menu/parkingout.lua',
-	'client/garagemanger_menu/parkinglist.lua',
+	'client/garagemanger_menu/menu_garagemanager.lua',
+	'client/garagemanger_menu/menu_parking_in.lua',
+	'client/garagemanger_menu/menu_parking_out.lua',
+	'client/garagemanger_menu/menu_parking_list.lua',
 
-	'client/towingyardmanager_menu/towingyardmanager.lua',
-	'client/towingyardmanager_menu/addtowingyardrelease.lua',
-	'client/towingyardmanager_menu/towingyardmenu.lua',
+	'client/towingyardmanager_menu/menu_towingyardmanager.lua',
+	'client/towingyardmanager_menu/menu_towingyard_out.lua',
+	'client/towingyardmanager_menu/menu_towingyard_in.lua',
 
 }
 

@@ -1,6 +1,6 @@
 menuclick_wait = false
 
-function addTowingyardRelease(menu)
+function addTowingyardoutMenu(menu)
 
     local towingyard = getGarageFromId(interactionArea)
 

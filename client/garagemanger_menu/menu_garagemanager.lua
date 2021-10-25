@@ -6,7 +6,7 @@ function openGaragemanagerMenu()
 
     
     addParkingoutMenu(mainMenu)
-    addParkingMenu(mainMenu)
+    addParkinginMenu(mainMenu)
     addParkinglist(mainMenu)
     
     Citizen.Wait(250)
