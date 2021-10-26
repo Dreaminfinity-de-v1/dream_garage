@@ -1,14 +1,17 @@
 Config.DefaultTowingyards = { -- and Default Garages
-    car         = "towingyard_test", -- Cars, Bikes
-    truck       = "none", -- LKWs, Trailers
+    car         = "towingyard_lspd", -- Cars, Bikes
+    truck       = "none", -- LKWs, Trailers, Bus
     boat        = "none", -- Boats, Submarines
     heli        = "none", -- Helicopters
     plane       = "none", -- Planes
+    ship        = "none", -- Harbour for tug
+    airship     = "none", -- Airfield for blimp, blimp2, blimp3
 }
 
 Config.Towingyards = {
+--- CAR Towingyard ---
     {
-        id = 'towingyard_test',
+        id = 'towingyard_lspd',
         name = 'LSPD Towingyard',
         parking = {
             { pos = vector3(400.9347, -1632.3341, 29.2919), radius = 5 },
@@ -20,7 +23,7 @@ Config.Towingyards = {
         blip = {
             pos     = vector3(409.6227, -1623.1615, 29.2919),
             color   = 17,
-            sprite  = 68, -- Icontype
+            sprite  = 317, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -38,5 +41,7 @@ Config.Towingyards = {
         },
 
     },
+--- TRUCK Towingyard ---
+
 
 }

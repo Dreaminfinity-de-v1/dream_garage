@@ -25,6 +25,7 @@ server_scripts {
 	'server/server.lua',
 	'server/functions/sv_towingyardmanager.lua',
 	'server/sv_commands.lua',
+	'server/sv_towingyard_Zero-User.lua'
 }
 
 client_scripts {

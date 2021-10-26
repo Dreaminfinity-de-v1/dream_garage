@@ -8,7 +8,7 @@ function openTowingyardmanagerMenu()
         local towingyardInMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_towingyardmenu_titel'))
         addTowingyardinMenu(towingyardInMenu)
 
-        local towingyardOutMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_release_titel'))
+        local towingyardOutMenu = menuPool:AddSubMenu(mainMenu, _U('towingyard_parkingout_titel'))
         addTowingyardoutMenu(towingyardOutMenu)
 
     else

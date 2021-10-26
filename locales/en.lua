@@ -1,12 +1,18 @@
 Locales['en'] = {
   ['garage_blip_name'] = "Garage",
+  ['truck_blip_name'] = "Truck Garage",
+  ['heli_blip_name'] = "Helicopterfield",
+  ['plane_blip_name'] = "Planehangar",
+  ['boat_blip_name'] = "Boat Dock",
+  ['airship_blip_name'] = "Airshipfield",
+  
   ['help_notification_garage'] = "press ~INPUT_CONTEXT~ to open the ~y~Garage Menu~s~.",
 
   ['towingyard_blip_name'] = "Towingyard",
   ['help_notification_towingyard'] = "press ~INPUT_CONTEXT~ to open the ~y~Towingyard Menu~s~.",
   
 
--- Garagemanager --
+  -- Garagemanager --
   ['garagemenu_titel'] = "Garage Menu",
   ['garagemenu_subtitel'] = "Garage: %s",
   ['garage_parkingin_titel'] = "Parking In",
@@ -39,23 +45,29 @@ Locales['en'] = {
   ['towingyardmenu_titel'] = "Towingyard Menu",
   ['towingyardmenu_subtitel'] = "Towingyard: %s",
   ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",
-  ['towingyard_release_titel'] = "Towingyard Vehicles",
-  ['towingyard_release_item'] = "[%s]",
-  ['towingyard_release_item_desc'] = "Enter to trigger for 250$",  --DEBUG
-  ['towingyard_release_noitem'] = "~r~No owned vehicle",
-  ['towingyard_release_noitem_desc'] = "You don't have any vehicles here!",
+
+  ['towingyard_parkingout_titel'] = "Towingyard Vehicles",
+  ['towingyard_parkingout_item'] = "[%s]",
+  ['towingyard_parkingout_item_desc'] = "Enter to trigger for %s$",
+  ['towingyard_parkingout_noitem'] = "~r~No owned vehicle",
+  ['towingyard_parkingout_noitem_desc'] = "You don't have any vehicles here!",
+
+  ['towingyard_parkingin_noitem'] = "~r~No owned vehicle",
+  ['towingyard_parkingin_noitem_desc'] = "Drive your vehicle in area",
+
+  ['towingyard_zero-user'] = "%s vehicles from type %s were brought to the towing yard",
 
 
 -- Notifications --
   ['notifications_titel'] = "Garagemanager",
-  ['notifications_towingyard_titel'] = "Towingyard",
+  ['notifications_towingyard_titel'] = "Towingyardmanager",
   ['notification_message_not-enough-money'] = "You haven't enough money",
   ['notification_message_not_allowed'] = "Do not allowed!",
   ['notification_message_database'] = "Error: DBase",
   ['notification_message_parking_attempt-info'] = "Vehicle is removing...",
   ['notification_message_wait-info'] = "Please wait...",
   ['notification_message_rename'] = "You changed the Vehiclename",
-  ['notification_message_release'] = "You trigger the Vehicle for 250$",  --DEBUG
+  ['notification_message_release'] = "You trigger the Vehicle for %s$",
 
   ['notification_message_parkingout'] = "Vehicle parked out!",
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",

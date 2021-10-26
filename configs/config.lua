@@ -43,10 +43,10 @@ Config.Notification = {
 }
 
 Config.Debugmode = {
-    enable = true,
+    enable = false,
     blips = true,
     marker = {
-        yellow = false,
+        yellow = true,
         red = true,
     },
     notification = false,

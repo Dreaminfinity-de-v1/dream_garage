@@ -24,6 +24,7 @@ Citizen.CreateThread(function()
         ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",
         {}, function(rowsChanged) end
     )
+    
 end)
 
 
@@ -47,8 +48,7 @@ ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, c
         end
 
         if found ~= true then
-            TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
-                Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+            cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
         end
         
     else
@@ -69,8 +69,7 @@ ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb,
         end
 
         if found ~= true then
-            TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
-                Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
+            cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
         end
         
     else
@@ -140,16 +139,8 @@ ESX.RegisterServerCallback('dream_garage:getTowingyardVehicles', function(src, c
         cb(getTowingyardVehicles(vehicle_plates))
         
     else
-        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_titel'),_U('notification_message_not_allowed'),
+        TriggerClientEvent("swt_notifications:captionIcon",src,_U('notifications_towingyard_titel'),_U('notification_message_not_allowed'),
             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
 
-    end
-end)
-
-AddEventHandler('playerDropped', function (reason)
-    local xPlayers = ESX.GetPlayers()
-
-    if #xPlayers <= 0 then
-        setVehicleInTowingyardByZeroUser()
     end
 end)

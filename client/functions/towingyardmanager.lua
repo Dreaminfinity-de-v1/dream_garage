@@ -8,10 +8,6 @@ function getTowingyardVehiclesInParkingarea(cb, vehicle_types, plate)
     ESX.TriggerServerCallback('dream_garage:getTowingyardVehicles', function(vehicles)
         local result = {}
         for i, v in ipairs(vehicles) do
-            print(v.data.data.model)
-            print(v.id)
-            print(GetEntityModel(v.id))
-            print(v.data.data.model == GetEntityModel(v.id))
             if v.data.data.model == GetEntityModel(v.id) then
                 if plate == nil then
                     table.insert( result, v )

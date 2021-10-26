@@ -19,14 +19,18 @@ Config.GarageParkinglistSort = {
 
 Config.DefaultGarages = { -- and Default Garages
     car         = "garage_legion_square", -- Cars, Bikes
-    truck       = "none", -- LKWs, Trailers
-    boat        = "none", -- Boats, Submarines
-    heli        = "none", -- Helicopters
-    plane       = "none", -- Planes
+    truck       = "garage_truck_airport", -- LKWs, Trailers, Bus
+    boat        = "garage_merryweather_dock", -- Boats, Submarines
+    heli        = "garage_heli_airport", -- Helicopters
+    plane       = "garage_plane_airport", -- Planes
+    ship        = "garage_merryweather_dock", -- Harbour for tug
+    airship     = "garage_airship_field", -- Airfield for blimp, blimp2, blimp3
 }
 
 Config.Garages = {
-    {  --24/7
+
+--- CAR GARAGE --
+    {
         id = 'garage_legion_square',
         name = "Legion Square Garage",
         vehicle_types = {
@@ -38,7 +42,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(228.1697, -790.0316, 30.3982),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -77,7 +81,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(-936.4885, -2644.5110, 19.1047),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -124,7 +128,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(150.3508, 6603.0908, 29.8593),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -163,7 +167,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(-73.2576, -2003.6951, 18.2753),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -203,7 +207,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(-1158.7681, -740.4506, 18.8899),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -243,7 +247,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(772.7162, -2966.0630, 5.9694),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -285,7 +289,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(-1314.8999, 268.5426, 63.4257),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -334,7 +338,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(453.4159, -1145.6571, 29.5141),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -351,12 +355,9 @@ Config.Garages = {
                 { coords = vector3(467.4682, -1161.0370, 29.2918), heading = 268.2710, radius = 6.0 },
                 { coords = vector3(467.8770, -1154.7925, 29.2918), heading = 268.2710, radius = 6.0 },
                 { coords = vector3(487.0495, -1151.9452, 29.2918), heading = 268.4257, radius = 6.0 },
-                --{ coords = vector3(487.4762, -1157.5077, 29.2918), heading = 265.1672, radius = 6.0 }, -- Too tight
                 { coords = vector3(487.0591, -1163.7765, 29.2918), heading = 268.2949, radius = 6.0 },
                 { coords = vector3(482.7648, -1168.8723, 29.2918), heading = 59.3287, radius = 6.0 },
                 { coords = vector3(473.1275, -1163.8098, 29.2918), heading = 83.9489, radius = 6.0 },
-                --{ coords = vector3(472.3307, -1157.8555, 29.2918), heading = 83.9489, radius = 6.0 }, -- Too tight
-                --{ coords = vector3(472.1539, -1151.5900, 29.2918), heading = 83.9489, radius = 6.0 }, -- Too tight
                 { coords = vector3(442.0641, -1157.7759, 29.2919), heading = 83.9489, radius = 6.0 },
                 { coords = vector3(442.1941, -1163.8042, 29.2919), heading = 83.9489, radius = 6.0 },
                 { coords = vector3(430.5609, -1154.8610, 29.2920), heading = 83.9489, radius = 6.0 },
@@ -383,7 +384,7 @@ Config.Garages = {
         blip = {
             pos     = vector3(-1026.7461, -1305.5083, 6.1357),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 357, -- Icontype
             scale   = 1.0,
             display = 2,
         },
@@ -408,9 +409,347 @@ Config.Garages = {
         },
     },
 
+---- TRUCK GARAGE ---
+    {
+        id = 'garage_truck_airport',
+        name = 'Truck Airport Garage',
+        vehicle_types = {
+            'truck',
+        },
+        parking = {
+            { pos = vector3(-833.3347, -2682.1433, 13.8121), radius = 25 },
+            { pos = vector3(-814.2823, -2651.4585, 13.8121), radius = 25 },
+            { pos = vector3(-801.4546, -2662.0469, 13.8091), radius = 25 },
+            { pos = vector3(-812.3704, -2688.6199, 13.8120), radius = 25 },
+        },
+        blip = {
+            titel   = _U('truck_blip_name'),
+            pos     = vector3(-849.9293, -2684.1035, 13.9120),
+            color   = 3,
+            sprite  = 357, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-849.9293, -2684.1035, 12.9120),
+            heading = 242.0638,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-786.1511, -2659.1790, 13.8121), heading = 59.9729, radius = 6.0 },
+                { coords = vector3(-792.9458, -2668.5420, 13.8121), heading = 59.9729, radius = 6.0 },
+                { coords = vector3(-798.9847, -2678.5410, 13.8120), heading = 59.9729, radius = 6.0 },
+                { coords = vector3(-804.9637, -2689.9861, 13.8120), heading = 59.9729, radius = 6.0 },
+                { coords = vector3(-811.6882, -2699.0642, 13.8120), heading = 59.9729, radius = 6.0 },
+                { coords = vector3(-818.6703, -2709.5220, 13.8121), heading = 59.9729, radius = 6.0 },
+            },
+        },
+    },
+    {
+        id = 'garage_truck_bilegeco',
+        name = 'Bilgeco Truck Garage',
+        vehicle_types = {
+            'truck',
+        },
+        parking = {
+            { pos = vector3(858.2462, -3217.0283, 5.8995), radius = 30 },
+            { pos = vector3(800.3146, -3210.6167, 5.9000), radius = 30 },
+        },
+        blip = {
+            titel   = _U('truck_blip_name'),
+            pos     = vector3(873.2687, -3217.8132, 5.8942),
+            color   = 3,
+            sprite  = 357, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(858.7287, -3203.0195, 4.9950),
+            heading = 187.4781,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(867.3167, -3225.8228, 6.0038), heading = 269.4745, radius = 8.0 },
+                { coords = vector3(844.9932, -3225.7993, 5.8971), heading = 269.4745, radius = 8.0 },
+                { coords = vector3(844.1259, -3210.1306, 5.9008), heading = 269.4745, radius = 8.0 },
+                { coords = vector3(864.7299, -3209.8401, 5.9007), heading = 269.4745, radius = 8.0 },
+            },
+        },
+    },
+    {
+        id = 'garage_truck_weldsupply',
+        name = 'Truck Weld Supply Garage',
+        vehicle_types = {
+            'truck',
+        },
+        parking = {
+            { pos = vector3(1153.1488, -1325.1228, 34.7150), radius = 25 },
+            { pos = vector3(1138.1351, -1292.6229, 34.6133), radius = 25 },
+        },
+        blip = {
+            titel   = _U('truck_blip_name'),
+            pos     = vector3(1165.3337, -1347.2050, 35.9637),
+            color   = 3,
+            sprite  = 357, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(1165.3337, -1347.2050, 34.9637),
+            heading = 282.2419,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(1157.1940, -1332.2035, 34.8072), heading = 266.8896, radius = 6.0 },
+                { coords = vector3(1143.7029, -1314.2623, 34.8072), heading = 178.4511, radius = 6.0 },
+                { coords = vector3(1150.4581, -1310.0079, 34.8072), heading = 178.4511, radius = 6.0 },
+                { coords = vector3(1137.2209, -1271.9216, 34.8072), heading = 132.5254, radius = 6.0 },
+                { coords = vector3(1145.1443, -1285.4558, 34.8072), heading = 178.4511, radius = 6.0 },
+            },
+        },
+    },
+
+    
+
+---- HELI GARAGE ----
+    {
+        id = 'garage_heli_airport',
+        name = 'Airport Helicopter Field',
+        vehicle_types = {
+            'heli',
+        },
+        parking = {
+            { pos = vector3(-1178.4304, -2845.8423, 13.9458), radius = 15 },
+            { pos = vector3(-1146.0565, -2864.5356, 13.9460), radius = 15 },
+            { pos = vector3(-1112.6602, -2883.9604, 13.9460), radius = 15 },
+        },
+        blip = {
+            titel   = _U('heli_blip_name'),
+            pos     = vector3(-1145.4733, -2825.8481, 13.9470),
+            color   = 3,
+            sprite  = 360, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-1145.4733, -2825.8481, 12.9470),
+            heading = 143.9625,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-1178.4304, -2845.8423, 13.9458), heading = 330.2105, radius = 15 },
+                { coords = vector3(-1146.0565, -2864.5356, 13.9460), heading = 330.2105, radius = 15 },
+                { coords = vector3(-1112.6602, -2883.9604, 13.9460), heading = 330.2105, radius = 15 },
+            },
+        },
+    },
+    {
+        id = 'garage_heli_marryweather',
+        name = 'Marryweather Helicopter Field',
+        vehicle_types = {
+            'heli',
+        },
+        parking = {
+            { pos = vector3(478.4069, -3369.9297, 6.0699), radius = 15 },
+        },
+        blip = {
+            titel   = _U('heli_blip_name'),
+            pos     = vector3(485.2766, -3383.1218, 5.0699),
+            color   = 3,
+            sprite  = 360, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(485.2766, -3383.1218, 5.0699),
+            heading = 357.9340,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(478.4069, -3369.9297, 6.0699), heading = 357.4040, radius = 15 },
+            },
+        },
+    },
+    {
+        id = 'garage_lsmyc_helifield',
+        name = 'LS Motor Yacht Club Helifield',
+        vehicle_types = {
+            'heli',
+        },
+        parking = {
+            { pos = vector3(-745.9293, -1469.2225, 6.4509), radius = 15 },
+            { pos = vector3(-724.3768, -1443.8441, 6.4509), radius = 15 },
+        },
+        blip = {
+            titel   = _U('heli_blip_name'),
+            pos     = vector3(-722.0306, -1512.3667, 4.0007),
+            color   = 3,
+            sprite  = 360, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-722.0306, -1512.3667, 4.0007),
+            heading = 290.7195,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-745.9293, -1469.2225, 6.4509), heading = 317.6277, radius = 15 },
+                { coords = vector3(-724.3768, -1443.8441, 6.4509), heading = 139.1907, radius = 15 },
+            },
+        },
+    },
+
+---- PLANE GARAGE ----
+    {
+        id = 'garage_plane_airport',
+        name = 'Airport Plane Garage',
+        vehicle_types = {
+            'plane',
+        },
+        parking = {
+            { pos = vector3(-1275.71, -3387.93, 13.94), radius = 30 },
+        },
+        blip = {
+            titel   = _U('plane_blip_name'),
+            pos     = vector3(-1242.4951, -3392.8992, 12.9401),
+            color   = 3,
+            sprite  = 359, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-1242.4951, -3392.8992, 12.9401),
+            heading = 46.7729,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-1271.4136, -3380.4827, 13.9401), heading = 325.0787, radius = 20 },
+            },
+        },
+    },
+
+---- BOAT GARAGE ----
+    {
+        id = 'garage_merryweather_dock',
+        name = 'Merryweather Dock ',
+        vehicle_types = {
+            'boat',
+            'ship',
+        },
+        parking = {
+            { pos = vector3(568.7150, -3157.1016, 2.3533), radius = 30 },
+        },
+        blip = {
+            titel   = _U('boat_blip_name'),
+            pos     = vector3(579.2316, -3160.7944, 0.9225),
+            color   = 3,
+            sprite  = 356, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(590.2422, -3154.0469, 5.06931),
+            heading = 85.7118,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(579.2316, -3160.7944, 0.9225), heading = 177.2025, radius = 20 },
+            },
+        },
+    },
+    {
+        id = 'garage_lsmyc_dock',
+        name = 'LS Motor Yacht Club Dock ',
+        vehicle_types = {
+            'boat',
+        },
+        parking = {
+            { pos = vector3(-720.9352, -1345.6971, 5.2029), radius = 40 },
+        },
+        blip = {
+            titel   = _U('boat_blip_name'),
+            pos     = vector3(-732.0396, -1312.6642, 4.0004),
+            color   = 3,
+            sprite  = 356, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-732.0396, -1312.6642, 4.0004),
+            heading = 49.5986,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-724.7778, -1326.1647, 0.3330), heading = 230.2953, radius = 5 },
+                { coords = vector3(-730.0537, -1333.4460, 0.1195), heading = 230.2953, radius = 5 },
+                { coords = vector3(-736.1058, -1340.1143, 0.1233), heading = 230.2953, radius = 5 },
+            },
+        },
+    },
+
+---- AIRSHIP GARAGE ----
+    {
+        id = 'garage_airship_field',
+        name = 'Airship field ',
+        vehicle_types = {
+            'airship',
+        },
+        parking = {
+            { pos = vector3(-1859.8804, -3135.8730, 13.9444), radius = 30 },
+        },
+        blip = {
+            titel   = _U('airship_blip_name'),
+            pos     = vector3(-1855.7841, -3118.4189, 12.9444),
+            color   = 3,
+            sprite  = 638, -- Icontype
+            scale   = 1.0,
+            display = 2,
+        },
+
+        garagemanager = {
+            pos = vector3(-1855.7841, -3118.4189, 12.9444),
+            heading = 149.1050,
+            type = 4,
+            model = "a_m_y_bevhills_02",
+            radius = 2,
+            
+            spawnpoints = {
+                { coords = vector3(-1859.8804, -3135.8730, 13.9444), heading = 237.7797, radius = 30 },
+            },
+        },
+    },
 
 
-    --[[ Template
+---- TEMPLATE ----
+--[[
     {
         id = 'garage_xyz',
         name = 'XYZ Garage',
@@ -421,9 +760,10 @@ Config.Garages = {
             { pos = vector3(x, y, z), radius = 30 },
         },
         blip = {
+            --titel   = "Test"
             pos     = vector3(x, y, z),
             color   = 3,
-            sprite  = 524, -- Icontype
+            sprite  = 524, -- Icontypes: Car/Truck - 357 || Heli - 360 || Plane - 359 || Boat - 356
             scale   = 1.0,
             display = 2,
         },
@@ -441,7 +781,7 @@ Config.Garages = {
             },
         },
     },
-    --]]
+--]]
+}
 
     
-}

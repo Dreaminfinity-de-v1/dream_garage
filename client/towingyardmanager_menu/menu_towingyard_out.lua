@@ -10,7 +10,7 @@ function addTowingyardoutMenu(menu)
 
             for i, v in ipairs(vehicles) do
 
-                item = NativeUI.CreateItem(_U('towingyard_release_item', v.plate), _U('towingyard_release_item_desc', Config.ImpoundPrice))
+                item = NativeUI.CreateItem(_U('towingyard_parkingout_item', v.plate), _U('towingyard_parkingout_item_desc', Config.ImpoundPrice))
                 if v.custom_name ~= nil then
                     item:RightLabel(v.custom_name)
                 end
@@ -48,7 +48,7 @@ function addTowingyardoutMenu(menu)
                 end
             end
         else
-            menu:AddItem(NativeUI.CreateItem(_U('towingyard_release_noitem'), _U('towingyard_release_noitem_desc')))
+            menu:AddItem(NativeUI.CreateItem(_U('towingyard_parkingout_noitem'), _U('towingyard_parkingout_noitem_desc')))
         end
 
     end, towingyard.id, towingyard.vehicle_types)
@@ -73,13 +73,13 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
 
                     menu:RemoveItemAt(index)
                     if #menu.Items <= 0 then
-                        menu:AddItem(NativeUI.CreateItem(_U('towingyard_release_noitem'), _U('towingyard_release_noitem_desc')))
+                        menu:AddItem(NativeUI.CreateItem(_U('towingyard_parkingout_noitem'), _U('towingyard_parkingout_noitem_desc')))
                         menu:RefreshIndex()
                     end
                     --menu:GoBack()
 
                     ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
-                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_release'),
+                        TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_release', Config.ImpoundPrice),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_open)
                         ESX.Game.SetVehicleProperties(vehicle, data.data)
                         Citizen.CreateThread(function ()
