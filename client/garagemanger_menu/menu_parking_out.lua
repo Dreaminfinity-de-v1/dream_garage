@@ -100,6 +100,7 @@ function onParkingoutItemClick(_data, garage, _index, _menu, _submenu)
                     ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout'),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_open)
+
                         ESX.Game.SetVehicleProperties(vehicle, data.data)
                         Citizen.CreateThread(function ()
                             local blip = AddBlipForCoord(v.coords.x, v.coords.y, v.coords.z)

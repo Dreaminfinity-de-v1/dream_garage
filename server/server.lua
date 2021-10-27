@@ -56,7 +56,7 @@ ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, c
     end
 end)
 
-ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb, plate, garage_id)
+ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb, data, garage_id, props)
     local xPlayer = ESX.GetPlayerFromId(src)
 
     if xPlayer.getJob().name == Config.TowingyardJob then
@@ -64,16 +64,16 @@ ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb,
         for i,v in ipairs(Config.Towingyards) do
             if v.id == garage_id then
                 found = true
-                cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id, true))
+                cb(setVehicleInparking(xPlayer.getIdentifier(), data, garage_id, props, true))
             end
         end
 
         if found ~= true then
-            cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
+            cb(setVehicleInparking(xPlayer.getIdentifier(), data, garage_id, props))
         end
         
     else
-        cb(setVehicleInparking(xPlayer.getIdentifier(), plate, garage_id))
+        cb(setVehicleInparking(xPlayer.getIdentifier(), data, garage_id, props))
     end
 
     

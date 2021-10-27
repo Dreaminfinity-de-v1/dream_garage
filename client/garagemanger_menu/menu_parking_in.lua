@@ -90,7 +90,7 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
                         
                     end
 
-                end, data.data.plate, garage.id)
+                end, data.data.plate, garage.id, ESX.Game.GetVehicleProperties(data.id))
             else
                 TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingin_not-in-area'),
                     Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)

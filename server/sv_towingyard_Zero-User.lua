@@ -11,9 +11,10 @@ function setVehicleInTowingyardByZeroUser()
                 ['@type'] = k,
                 ['@garage_id'] = v,
             })
-
-            if changes ~= 0 then
-                print(_U('towingyard_zero-user', changes, k))
+            if Config.Debugmode.enable == true then
+                if changes ~= 0 then
+                    print(_U('towingyard_zero-user', changes, k))
+                end
             end
         end
     end

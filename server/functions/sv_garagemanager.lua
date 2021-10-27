@@ -20,7 +20,7 @@ function setVehicleOutparking(license, plate, allowed)
     return 'ok'
 end
 
-function setVehicleInparking(license, plate, garage_id, allowed)
+function setVehicleInparking(license, plate, garage_id, props, allowed)
     local vehicle = getVehicleByPlate(plate)
     
     if vehicle == nil then
@@ -37,6 +37,27 @@ function setVehicleInparking(license, plate, garage_id, allowed)
 
     if vehicle.garage_id ~= nil then
         return 'already_in'
+    end
+
+    if vehicle.data.bodyHealth > props.bodyHealth then
+        vehicle.data.bodyHealth = props.bodyHealth
+    end
+    if vehicle.data.engineHealth > props.engineHealth then
+        vehicle.data.engineHealth = props.engineHealth
+    end
+    if vehicle.data.tankHealth > props.tankHealth then
+        vehicle.data.tankHealth = props.tankHealth
+    end
+    if vehicle.data.fuelLevel > props.fuelLevel then
+        vehicle.data.fuelLevel = props.fuelLevel
+    end
+    if vehicle.data.dirtLevel < props.dirtLevel then
+        vehicle.data.dirtLevel = props.dirtLevel
+    end
+    
+
+    if setVehicleData(plate, vehicle.data) ~= true then
+        return 'database'
     end
  
     if setVehicleGarage(plate, garage_id) ~= true then

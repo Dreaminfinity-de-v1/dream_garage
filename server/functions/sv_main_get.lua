@@ -29,18 +29,6 @@ function getVehicleByPlate(plate)
     if #vehicles >= 1 then
         vehicles[1].data = json.decode(vehicles[1].data)
         vehicles[1].data.plate = vehicles[1].plate
-
-        
-        if Config.Debugmode.enable == true then
-            for i,v in ipairs(vehicles) do 
-                print(i)
-                for k2, v2 in pairs(v) do
-                    print(k2)
-                    print(v2)
-                    print('------')
-                end
-            end
-        end
         return vehicles[1]
     end
 end

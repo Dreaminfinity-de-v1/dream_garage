@@ -51,3 +51,18 @@ function setVehicleGarage(plate, garage)
 
     return false
 end
+
+function setVehicleData(plate, data)
+    local result = 0
+
+    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `data` = @data WHERE `plate` = @plate" , {
+        ['@data'] = json.encode(data),
+        ['@plate'] = plate,
+    })
+    
+    if result >= 1 then
+        return true
+    end
+
+    return false
+end
