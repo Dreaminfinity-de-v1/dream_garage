@@ -20,6 +20,7 @@ Config.ImpounderPayWithCash = true
 
 Config.Commands = {
     give_vehicle = 'givevehicle',
+    save_props = 'saveprops',
 }
 
 Config.Notification = {

@@ -104,6 +104,12 @@ Locales['en'] = {
   ['cmd_giveVehicle_plateisnil'] = "ERROR - PLATE IS NIL!",
   ['cmd_giveVehicle_wrong-user'] = "The user doesn't exists!",
   ['cmd_giveVehicle_wrong-type'] = "The type doesn't exists!",
+
+
+  ['cmd_setprops'] = "Vehicleprops was saved!",
+  ['cmd_setprops_usage'] = "Usage: /%s",
+  ['cmd_setprops_vehicle-not-found'] = "Vehicle not found",
+  ['cmd_setprops_no-vehicle'] = "You're not in a Vehicle",
 }
 
 

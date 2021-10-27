@@ -24,7 +24,8 @@ server_scripts {
 
 	'server/server.lua',
 	'server/functions/sv_towingyardmanager.lua',
-	'server/sv_commands.lua',
+	'server/sv_cmd_givevehicle.lua',
+	'server/sv_cmd_saveprops.lua',
 	'server/sv_towingyard_Zero-User.lua'
 }
 
@@ -48,6 +49,7 @@ client_scripts {
 	'client/functions/towingyardmanager.lua',
 
 	'client/functions/give_vehicle.lua',
+	'client/functions/savepros.lua',
 
 	'client/garagemanger_menu/menu_garagemanager.lua',
 	'client/garagemanger_menu/menu_parking_in.lua',
