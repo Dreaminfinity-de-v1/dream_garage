@@ -61,6 +61,7 @@ function getRandomPlate(arg1, arg2)
 end
 
 function isLetter(letter)
+    letter = string.upper(letter)
     for i,v in ipairs(letters) do
         if letter == v then
             return true
