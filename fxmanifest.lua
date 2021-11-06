@@ -2,9 +2,11 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'Garage von Dreaminfinity.de'
+description 'Vehicle garage from Dreaminfinity.de'
 
 version '0.5.0-beta'
+
+author 'EThunder, Grewo'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
