@@ -1,4 +1,3 @@
-
 function setVehicle(type, target, data)
     local result = 0
 

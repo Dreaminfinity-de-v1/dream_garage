@@ -64,6 +64,11 @@ client_scripts {
 
 }
 
+server_export {
+	'setVehicle',
+	'getRandomPlate',
+}
+
 dependencies {
 	'es_extended',
 	'NativeUILua',
