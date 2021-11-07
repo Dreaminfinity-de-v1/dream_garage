@@ -67,6 +67,8 @@ client_scripts {
 server_export {
 	'setVehicle',
 	'getRandomPlate',
+	'getRandomPlateByGrade',
+	'setVehicleGarage',
 }
 
 dependencies {
