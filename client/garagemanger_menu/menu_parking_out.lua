@@ -13,11 +13,14 @@ function addParkingoutMenu(mainMenu)
 
                 
                 local submenu = menuPool:AddSubMenu(menu, _U('garage_parkingout_item', v.plate))
+                local displayName = GetDisplayNameFromVehicleModel(v.data.model)
 
                 if v.custom_name ~= nil then
                     submenu.Subtitle.Text:Text(_U('garage_parkingout_item_custom', v.plate, v.custom_name))
                     submenu.ParentItem:RightLabel(v.custom_name)
-                    
+                elseif displayName ~= nil and displayName ~= '' and string.lower(displayName) ~= 'null' then
+                    submenu.Subtitle.Text:Text(_U('garage_parkingout_item_custom', v.plate, displayName))
+                    submenu.ParentItem:RightLabel(displayName)
                 end
 
                 local parkingout =  NativeUI.CreateItem(_U('garage_parkingout_item_parkingout'), _U('garage_parkingout_item_parkingout_desc'))
@@ -182,7 +185,8 @@ function onRenameItemClick(item)
                 item.ParentMenu.ParentItem:RightLabel(dialog[1].input)
                 item.ParentMenu.data.custom_name = dialog[1].input
             else
-                item.ParentMenu.ParentItem:RightLabel("")
+                item.ParentMenu.Subtitle.Text:Text(_U('garage_parkingout_item_custom', item.ParentMenu.data.plate, GetDisplayNameFromVehicleModel(item.ParentMenu.data.data.model)))
+                item.ParentMenu.ParentItem:RightLabel(GetDisplayNameFromVehicleModel(item.ParentMenu.data.data.model))
                 item.ParentMenu.data.custom_name = dialog[1].input
 
             end
