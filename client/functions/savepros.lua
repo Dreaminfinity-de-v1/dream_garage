@@ -1,5 +1,5 @@
 
-TriggerEvent('chat:addSuggestion', ('/%s'):format(Config.Commands.save_props), _U('cmd_giveVehicle_usage', Config.Commands.save_props))
+TriggerEvent('chat:addSuggestion', ('/%s'):format(Config.Commands.save_props), _U('cmd_setprops_usage', Config.Commands.save_props))
 
 RegisterNetEvent('dream_garage:cmd_setVehicleData', function()
     local ped = GetPlayerPed(-1)

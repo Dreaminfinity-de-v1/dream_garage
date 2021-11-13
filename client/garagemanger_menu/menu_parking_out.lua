@@ -110,7 +110,6 @@ function onParkingoutItemClick(_data, garage, _index, _menu, _submenu)
                             SetBlipScale(blip, 1.0)
                             SetBlipAsShortRange(blip, true)
                             SetBlipRoute(blip, true)
-                            SetBlipAsMissionCreatorBlip(blip, true)
     
                             while true do
                                 Citizen.Wait(500)
