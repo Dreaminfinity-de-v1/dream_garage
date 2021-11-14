@@ -82,7 +82,7 @@ end)
 ESX.RegisterServerCallback('dream_garage:cmd_giveVehicle', function(src, cb, type, target, data)
     if IsPlayerAceAllowed(src, "dream_garage.giveVehicle") then
         
-        if Config.DefaultGarages[type] == nil then
+        if Config.VehicleTypes[type] == nil then
             TriggerClientEvent('chat:addMessage', src, {
                 color = { 255, 0, 0},
                 multiline = true,

@@ -8,11 +8,6 @@ Config.NPCsDefaultModel = "ig_mp_agent14"
 
 Config.KeyControle      = 38 -- Default: 38 (E)
 
-Config.RandomPlateSchemes = {
-    grade_0 = "11AAA111", -- Default Value
-    grade_1 = "AAA 1234", -- other Default Value
-}
-
 Config.TowingyardJob = 'mechanic'
 Config.ImpoundPrice = 250
 Config.ImpounderPayWithBank = true

@@ -7,16 +7,15 @@ RegisterCommand(Config.Commands.give_vehicle, function(source, args, rawCommand)
         
         if source > 0 then
             if #args == 2 then
-                giveVehicle(source, args[1], args[2], source, getRandomPlateByGrade(0))
+                giveVehicle(source, args[1], args[2], source, getRandomPlateByVehicletype(args[1]))
     
             elseif #args == 3 then
-                giveVehicle(source, args[1], args[2], args[3], getRandomPlateByGrade(0))
+                giveVehicle(source, args[1], args[2], args[3], getRandomPlateByVehicletype(args[1]))
     
             elseif #args == 4 then
-                if args[4] == '0' then
-                    giveVehicle(source, args[1], args[2], args[3], getRandomPlateByGrade(0))
-                elseif args[4] == '1' then
-                    giveVehicle(source, args[1], args[2], args[3], getRandomPlateByGrade(1))
+                plate = getRandomPlateByGrade(args[4])
+                if plate ~= nil then
+                    giveVehicle(source, args[1], args[2], args[3], plate)
                 else
                     TriggerClientEvent('chat:addMessage', source, {
                         color = { 255, 0, 0},
@@ -24,7 +23,7 @@ RegisterCommand(Config.Commands.give_vehicle, function(source, args, rawCommand)
                         args = {_U('notifications_titel'), _U('cmd_giveVehicle_usage', Config.Commands.give_vehicle)}
                     })
                 end
-            elseif #args >= 5 and args[4] == '2' then
+            elseif #args >= 5 and (args[4] == 'custom' or args[4] == 'c') then
                 if #args[5] <= 8 then
                     if not isPlateExist(args[5]) then
                         giveVehicle(source, args[1], args[2], args[3], args[5])

@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Vehicle garage from Dreaminfinity.de'
 
-version '0.5.1-beta'
+version '0.6.0-beta'
 
 author 'EThunder, Grewo'
 
@@ -15,6 +15,7 @@ server_scripts {
 	'locales/en.lua',
 
 	'configs/config.lua',
+	'configs/config_plate.lua',
 	'configs/config_garage.lua',
 	'configs/config_towingyard.lua',
 
@@ -38,6 +39,7 @@ client_scripts {
 	'locales/en.lua',
 
 	'configs/config.lua',
+	'configs/config_plate.lua',
 	'configs/config_garage.lua',
 	'configs/config_towingyard.lua',
 
@@ -66,9 +68,10 @@ client_scripts {
 
 server_export {
 	'setVehicle',
+	'setVehicleGarage',
 	'getRandomPlate',
 	'getRandomPlateByGrade',
-	'setVehicleGarage',
+	'getRandomPlateByVehicletype',
 }
 
 dependencies {

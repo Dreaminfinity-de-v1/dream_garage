@@ -17,16 +17,6 @@ Config.GarageParkinglistSort = {
     'unknown_garages',
 }
 
-Config.DefaultGarages = { -- and Default Garages
-    car         = "garage_legion_square", -- Cars, Bikes
-    truck       = "garage_truck_airport", -- LKWs, Trailers, Bus
-    boat        = "garage_merryweather_dock", -- Boats, Submarines
-    heli        = "garage_heli_airport", -- Helicopters
-    plane       = "garage_plane_airport", -- Planes
-    ship        = "garage_merryweather_dock", -- Harbour for tug
-    airship     = "garage_airship_field", -- Airfield for blimp, blimp2, blimp3
-}
-
 Config.Garages = {
 
 --- CAR GARAGE --
@@ -35,6 +25,7 @@ Config.Garages = {
         name = "Legion Square Garage",
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(228.1697, -790.0316, 30.3982), radius = 28 },
@@ -72,6 +63,7 @@ Config.Garages = {
         name = "Airpot Garage",
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(-949.2521, -2673.2676, 21.6195), radius = 30 },
@@ -121,6 +113,7 @@ Config.Garages = {
         name = 'Paleto Bay Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(150.3508, 6603.0908, 29.8593), radius = 40 },
@@ -159,6 +152,7 @@ Config.Garages = {
         name = 'Maze Bank Arena Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(-98.4077, -2005.0742, 18.0182), radius = 30 },
@@ -198,6 +192,7 @@ Config.Garages = {
         name = 'LSPD Vespucci Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(-1179.2786, -734.8218, 20.3068), radius = 30 },
@@ -239,6 +234,7 @@ Config.Garages = {
         name = 'Jetsam Terminal Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(772.7468, -2950.4924, 5.9386), radius = 20 },
@@ -279,6 +275,7 @@ Config.Garages = {
         name = 'Richman Hotel Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(-1315.0947, 275.2265, 63.5426), radius = 20 },
@@ -329,6 +326,7 @@ Config.Garages = {
         name = 'Mission Row Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(447.5323, -1158.0652, 29.2918), radius = 15 },
@@ -376,6 +374,7 @@ Config.Garages = {
         name = 'La Spada Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(-996.5576, -1285.1532, 5.6222), radius = 22 },
@@ -755,6 +754,7 @@ Config.Garages = {
         name = 'XYZ Garage',
         vehicle_types = {
             'car',
+            'motorcycle',
         },
         parking = {
             { pos = vector3(x, y, z), radius = 30 },

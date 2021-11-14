@@ -1,7 +1,7 @@
 function setVehicle(type, target, data)
     local result = 0
 
-    if Config.DefaultGarages[type] ~= nil and not isPlateExist(data.plate) then
+    if Config.VehicleTypes[type] ~= nil and not isPlateExist(data.plate) then
         local xPlayer = ESX.GetPlayerFromId(target)
         local owner = "ERROR"
 
@@ -17,7 +17,7 @@ function setVehicle(type, target, data)
             ['@plate'] = data.plate,
             ['@owner'] = owner,
             ['@data'] = json.encode(data),
-            ['@garage_id'] = Config.DefaultGarages[type],
+            ['@garage_id'] = Config.VehicleTypes[type].default_garage,
             ['@type'] = type,
         })
     end
@@ -64,4 +64,25 @@ function setVehicleData(plate, data)
     end
 
     return false
+end
+
+function setVehiclePlate(oldplate, newplate)
+    local result = 0
+
+    vehicledata = json.decode(getVehicleByPlate(oldplate).data)
+
+    vehicledata.plate = newplate
+
+    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `data` = @data, `plate` = @newplate WHERE `plate` = @oldplate" , {
+        ['@data'] = json.encode(vehicledata),
+        ['@newplate'] = newplate,
+        ['@oldplate'] = oldplate,
+    })
+    
+    if result >= 1 then
+        return true
+    end
+
+    return false
+
 end

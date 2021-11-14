@@ -1,11 +1,13 @@
-local letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" }
-
 function getRandomPlateByGrade(plategrade)
-    if plategrade == 0 then
-        return getRandomPlate(Config.RandomPlateSchemes.grade_0)
-    elseif plategrade == 1 then
-        return getRandomPlate(Config.RandomPlateSchemes.grade_1)
+    if Config.RandomPlateSchemes[plategrade] ~= nil then
+        return getRandomPlate(Config.RandomPlateSchemes[plategrade].prefix, Config.RandomPlateSchemes[plategrade].scheme)
     end
+end
+
+function getRandomPlateByVehicletype(vehicletype)
+    local scheme = Config.RandomPlateSchemes[Config.VehicleTypes[vehicletype].default_scheme]
+    return getRandomPlate(scheme.prefix, scheme.scheme)
+
 end
 
 function getRandomPlate(arg1, arg2)
@@ -39,13 +41,13 @@ function getRandomPlate(arg1, arg2)
             if tonumber(v) ~= nil then
                 plate = plate .. math.random(0, 9)
             elseif isLetter(v) then
-                plate = plate .. letters[math.random(1,#letters)]
+                plate = plate .. Config.AllowedPlateChars[math.random(1,#Config.AllowedPlateChars)]
             elseif v == ' ' then
                 plate = plate .. ' '
             else
-                local random = math.random(1,#letters+10)
+                local random = math.random(1,#Config.AllowedPlateChars+10)
                 if random > 10 then
-                    plate = plate .. letters[random-10]
+                    plate = plate .. Config.AllowedPlateChars[random-10]
                 else
                     plate = plate .. random-1
                 end
@@ -62,7 +64,7 @@ end
 
 function isLetter(letter)
     letter = string.upper(letter)
-    for i,v in ipairs(letters) do
+    for i,v in ipairs(Config.AllowedPlateChars) do
         if letter == v then
             return true
         end

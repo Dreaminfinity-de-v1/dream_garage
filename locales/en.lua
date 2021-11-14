@@ -91,11 +91,11 @@ Locales['en'] = {
 -- Command --
   ['nopermissions'] = "You don't have any permissions for %s!",
   ['cmd_giveVehicle'] = "The vehicle is in the garage.",
-  ['cmd_giveVehicle_usage'] = "Usage: /%s <type> <model> [player] [0|1|2] [plate]",
+  ['cmd_giveVehicle_usage'] = "Usage: /%s <type> <model> [player] [trans|c|...] [plate]",
   ['cmd_giveVehicle_type'] = "Vehicle type",
   ['cmd_giveVehicle_model'] = "Vehicle spawnname or hash",
   ['cmd_giveVehicle_target'] = "Optional, Target player server-id/license",
-  ['cmd_giveVehicle_plate-grade'] = "Optional, 0(default): 'HPF8DCD9' | 1: 'FXT 532' | 2: 'TEST'",
+  ['cmd_giveVehicle_plate-grade'] = "Optional, trans(default): 'DREAM123' | custom or c: 'TEST' | ... ",
   ['cmd_giveVehicle_plate'] = "Optional, Vehicle custom plate (max. 8 chars)",
   ['cmd_giveVehicle_maxchars'] = "max. 8 chars for [plate]",
   ['cmd_giveVehicle_invalid-model'] = "Invalid vehicle model",
