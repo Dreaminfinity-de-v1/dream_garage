@@ -16,7 +16,7 @@ Config.RandomPlateSchemes = {
 
 Config.VehicleTypes = {
     motorcycle  = { default_garage = "garage_legion_square", default_scheme = "trans" }, -- Bikes
-    car         = { default_garage = "garage_legion_square", default_scheme = "trans" }, -- Cars
+    car         = { default_garage = "towingyard_lspd", default_scheme = "trans" }, -- Cars      DEBUG default_garage
     truck       = { default_garage = "garage_truck_airport", default_scheme = "trans" }, -- LKWs, Trailers, Bus
     boat        = { default_garage = "garage_merryweather_dock", default_scheme = "vin" }, -- Boats, Submarines
     heli        = { default_garage = "garage_heli_airport", default_scheme = "vin" }, -- Helicopters

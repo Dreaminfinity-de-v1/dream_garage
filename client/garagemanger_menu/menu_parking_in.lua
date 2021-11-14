@@ -8,11 +8,11 @@ function addParkinginMenu(mainMenu)
         if #vehicles > 0 then
             for i, v in ipairs(vehicles) do
                 item = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), _U('garage_parkingin_item_desc'))
-                local displayName = GetDisplayNameFromVehicleModel(v.data.data.model)
+                local displayName = getVehicleNameByModel(v.data.data.model)
 
                 if v.custom_name ~= nil then
                     item:RightLabel(v.custom_name)
-                elseif displayName ~= nil and displayName ~= '' and string.lower(displayName) ~= 'null' then
+                elseif displayName ~= nil then
                     item:RightLabel(displayName)
                 end
 

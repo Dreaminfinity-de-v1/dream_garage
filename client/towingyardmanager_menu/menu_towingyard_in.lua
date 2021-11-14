@@ -6,6 +6,11 @@ function addTowingyardinMenu(menu)
         if #vehicles > 0 then
             for i, v in ipairs(vehicles) do
                 item = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), _U('garage_parkingin_item_desc'))
+                local displayName = getVehicleNameByModel(v.data.data.model)
+
+                if displayName ~= nil then
+                    item:RightLabel(displayName)
+                end
 
                 item.data = v
                 menu:AddItem(item)

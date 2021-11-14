@@ -11,8 +11,12 @@ function addTowingyardoutMenu(menu)
             for i, v in ipairs(vehicles) do
 
                 item = NativeUI.CreateItem(_U('towingyard_parkingout_item', v.plate), _U('towingyard_parkingout_item_desc', Config.ImpoundPrice))
+                local displayName = getVehicleNameByModel(v.data.model)
+
                 if v.custom_name ~= nil then
                     item:RightLabel(v.custom_name)
+                elseif displayName ~= nil then
+                    item:RightLabel(displayName)
                 end
 
                 item.data = v

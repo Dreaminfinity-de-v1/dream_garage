@@ -14,11 +14,11 @@ function addParkinglist(mainMenu)
             for i, v in ipairs(vehicles) do
 
                 item = NativeUI.CreateItem(_U('garage_parkinglist_item', v.plate), _U('garage_parkinglist_item_desc'))
-                local displayName = GetDisplayNameFromVehicleModel(v.data.model)
+                local displayName = getVehicleNameByModel(v.data.model)
 
                 if v.custom_name ~= nil then
                     item:RightLabel(v.custom_name)
-                elseif displayName ~= nil and displayName ~= '' and string.lower(displayName) ~= 'null' then
+                elseif displayName ~= nil then
                     item:RightLabel(displayName)
                 end
 

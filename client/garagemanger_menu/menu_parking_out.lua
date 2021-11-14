@@ -13,12 +13,12 @@ function addParkingoutMenu(mainMenu)
 
                 
                 local submenu = menuPool:AddSubMenu(menu, _U('garage_parkingout_item', v.plate))
-                local displayName = GetDisplayNameFromVehicleModel(v.data.model)
+                local displayName = getVehicleNameByModel(v.data.model)
 
                 if v.custom_name ~= nil then
                     submenu.Subtitle.Text:Text(_U('garage_parkingout_item_custom', v.plate, v.custom_name))
                     submenu.ParentItem:RightLabel(v.custom_name)
-                elseif displayName ~= nil and displayName ~= '' and string.lower(displayName) ~= 'null' then
+                elseif displayName ~= nil then
                     submenu.Subtitle.Text:Text(_U('garage_parkingout_item_custom', v.plate, displayName))
                     submenu.ParentItem:RightLabel(displayName)
                 end
