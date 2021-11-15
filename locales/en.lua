@@ -10,7 +10,11 @@ Locales['en'] = {
 
   ['towingyard_blip_name'] = "Towingyard",
   ['help_notification_towingyard'] = "press ~INPUT_CONTEXT~ to open the ~y~Towingyard Menu~s~.",
-  
+
+  ['config_allowedpayments_money'] = "Cash",
+  ['config_allowedpayments_bank'] = "Bank",
+  ['config_allowedpayments_black_money'] = "Black Money",
+ 
 
   -- Garagemanager --
   ['garagemenu_titel'] = "Garage Menu",
