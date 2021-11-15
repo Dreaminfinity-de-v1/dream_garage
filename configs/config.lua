@@ -10,8 +10,10 @@ Config.KeyControle      = 38 -- Default: 38 (E)
 
 Config.TowingyardJob = 'mechanic'
 Config.ImpoundPrice = 250
-Config.ImpounderPayWithBank = true
-Config.ImpounderPayWithCash = true
+Config.AllowedPayments = {
+    {name = 'money', label = "Cash"},
+    {name = 'bank', label = "Bank"},
+}
 
 Config.Commands = {
     give_vehicle = 'givevehicle',

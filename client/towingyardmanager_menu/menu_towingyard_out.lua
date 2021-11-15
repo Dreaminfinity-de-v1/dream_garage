@@ -10,45 +10,61 @@ function addTowingyardoutMenu(menu)
 
             for i, v in ipairs(vehicles) do
 
-                item = NativeUI.CreateItem(_U('towingyard_parkingout_item', v.plate), _U('towingyard_parkingout_item_desc', Config.ImpoundPrice))
+                local submenu = menuPool:AddSubMenu(menu, _U('towingyard_parkingout_menu', v.plate), _U('towingyard_parkingout_menu_desc', Config.ImpoundPrice))
                 local displayName = getVehicleNameByModel(v.data.model)
 
                 if v.custom_name ~= nil then
-                    item:RightLabel(v.custom_name)
+                    submenu.Subtitle.Text:Text(_U('towingyard_parkingout_menu_custom', v.plate, v.custom_name))
+                    submenu.ParentItem:RightLabel(v.custom_name)
                 elseif displayName ~= nil then
-                    item:RightLabel(displayName)
+                    submenu.Subtitle.Text:Text(_U('towingyard_parkingout_menu_custom', v.plate, displayName))
+                    submenu.ParentItem:RightLabel(displayName)
                 end
 
-                item.data = v
-                menu:AddItem(item)
+                for k,v in pairs(Config.AllowedPayments) do
+                    local item =  NativeUI.CreateItem(_U('towingyard_parkingout_item_payment', v.label), "")
+                    item:RightLabel(_U('towingyard_parkingout_item_pricesuffix', Config.ImpoundPrice))
+                    item.payment = v.name
+                    submenu:AddItem(item)
+                end
+
+                submenu.data = v
 
                 local _towingyard = towingyard
+                
 
-                menu.OnItemSelect = function(sender, _item, index)
+                submenu.OnItemSelect = function(sender, _item, index)
 
-                    ESX.TriggerServerCallback('dream_garage:hasEnoughMoney', function(result)
-                        if result == true then
+                    if _item ~= nil and _item.ParentMenu.data ~= nil and _item.payment ~= nil then
 
-                            if _item ~= nil and _item.data ~= nil then
-                                if menuclick_wait == true then
-                                    TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_wait-info'),
-                                        Config.Notification.pos,1,Config.Notification.color.wait,'white',true,Config.Notification.icons.car_wait)
-                                    return
-                                end
-            
-                                menuclick_wait = true
-                                Citizen.CreateThread(function()
-                                    Citizen.Wait(500)
-                                    menuclick_wait = false
-                                end)
-
-                                onReleaseItemClick(_item.data, _towingyard, index, menu)
+                        if getMoney(_item.payment) >= Config.ImpoundPrice then
+                            if menuclick_wait == true then
+                                TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_wait-info'),
+                                    Config.Notification.pos,1,Config.Notification.color.wait,'white',true,Config.Notification.icons.car_wait)
+                                return
                             end
+        
+                            menuclick_wait = true
+                            Citizen.CreateThread(function()
+                                Citizen.Wait(500)
+                                menuclick_wait = false
+                            end)
+
+                            for i,v in ipairs(_item.ParentMenu.ParentItem.ParentMenu.Items) do
+                                if _item.ParentMenu.ParentItem == v then
+                                    onReleaseItemClick(_item, _towingyard, i, menu)
+                                end
+                            end
+
+                            
+                            
+
                         else
                             TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_not-enough-money'),
                                 Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
                         end
-                    end)
+                    end
+
                 end
             end
         else
@@ -59,11 +75,13 @@ function addTowingyardoutMenu(menu)
 end
 
 
-function onReleaseItemClick(_data, towingyard, _index, _menu)
+function onReleaseItemClick(item, towingyard, _index, _menu)
 
 
     local found = false
-    local data = _data
+    local data = item.ParentMenu.data
+    local submenu = item.ParentMenu
+    local payment = item.payment
     local menu = _menu
     local index = _index
 
@@ -71,7 +89,7 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
         if #ESX.Game.GetVehiclesInArea(v.coords, v.radius) <= 0 then
             found = true
 
-            ESX.TriggerServerCallback('dream_garage:setVehicleOutparking', function(error)
+            ESX.TriggerServerCallback('dream_garage:setVehicleOutparkingTowingyard', function(error)
 
                 if error == 'ok' then
 
@@ -80,7 +98,8 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
                         menu:AddItem(NativeUI.CreateItem(_U('towingyard_parkingout_noitem'), _U('towingyard_parkingout_noitem_desc')))
                         menu:RefreshIndex()
                     end
-                    --menu:GoBack()
+                    submenu:GoBack()
+
 
                     ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_towingyard_titel'),_U('notification_message_release', Config.ImpoundPrice),
@@ -94,7 +113,6 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
                             SetBlipScale(blip, 1.0)
                             SetBlipAsShortRange(blip, true)
                             SetBlipRoute(blip, true)
-                            SetBlipAsMissionCreatorBlip(blip, true)
     
                             while true do
                                 Citizen.Wait(500)
@@ -104,8 +122,6 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
                                 end
                             end
                         end)
-
-                        TriggerServerEvent('dream_garage:removeMoney')
                     end)
 
                 elseif error == 'not_allowed' then
@@ -125,7 +141,7 @@ function onReleaseItemClick(_data, towingyard, _index, _menu)
                     
                 end
                 
-            end, data.plate, nil)
+            end, data.plate, payment)
             break
         end
     end

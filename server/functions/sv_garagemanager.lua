@@ -1,11 +1,14 @@
 function setVehicleOutparking(license, plate, allowed)
     local vehicle = getVehicleByPlate(plate)
+    print("function setVehicleOutparking(license, plate, allowed)")
     
     if vehicle == nil then
+        print("if vehicle == nil then")
         return 'not_allowed'
     end
     
     if vehicle.owner ~= license and not allowed then
+        print("if vehicle.owner ~= license and not allowed then")
         return 'not_allowed'
     end
 

@@ -36,25 +36,32 @@ end)
 
 ESX.RegisterServerCallback('dream_garage:setVehicleOutparking', function (src, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(src)
+    cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
+end)
 
-    if xPlayer.getJob().name == Config.TowingyardJob then
-        local vehicle = getVehicleByPlate(plate)
-        local found = false
-        for i,v in ipairs(Config.Towingyards) do
-            if v.id == vehicle.garage_id then
-                found = true
-                cb(setVehicleOutparking(xPlayer.getIdentifier(), plate, true))
-            end
-        end
 
-        if found ~= true then
+
+ESX.RegisterServerCallback('dream_garage:setVehicleOutparkingTowingyard', function (src, cb, plate, payment)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    local found = false
+
+    for i, v in ipairs(Config.AllowedPayments) do
+        if v.name == payment and xPlayer.getAccount(payment).money >= Config.ImpoundPrice then
+            xPlayer.removeAccountMoney(payment, Config.ImpoundPrice)
             cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
+            found = true
+            break
         end
-        
-    else
-        cb(setVehicleOutparking(xPlayer.getIdentifier(), plate))
+    end
+
+    if not found then
+        cb('not_allowed')
     end
 end)
+
+
+
 
 ESX.RegisterServerCallback('dream_garage:setVehicleInparking', function(src, cb, data, garage_id, props)
     local xPlayer = ESX.GetPlayerFromId(src)
@@ -124,12 +131,6 @@ ESX.RegisterServerCallback('dream_garage:setVehicleCustomename', function(src, c
             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
         
     end
-end)
-
-ESX.RegisterServerCallback('dream_garage:hasEnoughMoney', function(src, cb)
-    local xPlayer = ESX.GetPlayerFromId(src)
-
-    cb(checkImpoundMoney(src))
 end)
 
 ESX.RegisterServerCallback('dream_garage:getTowingyardVehicles', function(src, cb, vehicle_plates)

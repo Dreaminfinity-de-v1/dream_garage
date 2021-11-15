@@ -61,3 +61,11 @@ function getVehicleNameByModel(model)
     return name
     
 end
+
+function getMoney(account)
+    for i, v in pairs(ESX.GetPlayerData().accounts) do
+        if v.name == account then
+            return v.money
+        end
+    end
+end

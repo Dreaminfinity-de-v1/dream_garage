@@ -47,8 +47,11 @@ Locales['en'] = {
   ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",
 
   ['towingyard_parkingout_titel'] = "Towingyard Vehicles",
-  ['towingyard_parkingout_item'] = "[%s]",
-  ['towingyard_parkingout_item_desc'] = "Enter to trigger for %s$",
+  ['towingyard_parkingout_menu'] = "[%s]",
+  ['towingyard_parkingout_menu_custom'] = "[%s] - %s",
+  ['towingyard_parkingout_menu_desc'] = "Enter to trigger for %s$",
+  ['towingyard_parkingout_item_payment'] = "Paymentoption: %s",
+  ['towingyard_parkingout_item_pricesuffix'] = "%s$",
   ['towingyard_parkingout_noitem'] = "~r~No owned vehicle",
   ['towingyard_parkingout_noitem_desc'] = "You don't have any vehicles here!",
 
