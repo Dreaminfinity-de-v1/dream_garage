@@ -21,7 +21,7 @@ function addTowingyardoutMenu(menu)
                     submenu.ParentItem:RightLabel(displayName)
                 end
 
-                for k,v in pairs(Config.AllowedPayments) do
+                for i,v in ipairs(Config.AllowedPayments) do
                     local item =  NativeUI.CreateItem(_U('towingyard_parkingout_item_payment', v.label), "")
                     item:RightLabel(_U('towingyard_parkingout_item_pricesuffix', Config.ImpoundPrice))
                     item.payment = v.name
