@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Vehicle garage from Dreaminfinity.de'
 
-version '0.6.2-beta'
+version '0.6.3-beta'
 
 author 'EThunder, Grewo'
 
@@ -24,6 +24,7 @@ server_scripts {
 	'server/functions/sv_main_is.lua',
 	'server/functions/sv_main_set.lua',
 	'server/functions/sv_plate.lua',
+	'server/functions/sv_vin.lua',
 
 	'server/server.lua',
 	'server/functions/sv_towingyardmanager.lua',

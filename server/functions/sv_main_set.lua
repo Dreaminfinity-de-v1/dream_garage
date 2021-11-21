@@ -4,6 +4,7 @@ function setVehicle(type, target, data)
     if Config.VehicleTypes[type] ~= nil and not isPlateExist(data.plate) then
         local xPlayer = ESX.GetPlayerFromId(target)
         local owner = "ERROR"
+        local vin = getRandomVehicleIdentificationNumber()
 
         if xPlayer ~= nil then
             owner = xPlayer.getIdentifier()
@@ -13,15 +14,29 @@ function setVehicle(type, target, data)
             return false
         end
 
-        result = MySQL.Sync.execute("INSERT INTO `dream_owned_vehicle`(`plate`, `owner`, `data`, `garage_id`, `custom_name`, `type`) VALUES (@plate, @owner, @data, @garage_id, NULL, @type)" , {
+        result = MySQL.Sync.execute("INSERT INTO `dream_owned_vehicle`(`vin`, `plate`, `owner`, `data`, `garage_id`, `custom_name`, `type`) VALUES (@vin, @plate, @owner, @data, @garage_id, NULL, @type)" , {
+            ['@vin'] = vin,
             ['@plate'] = data.plate,
             ['@owner'] = owner,
             ['@data'] = json.encode(data),
             ['@garage_id'] = Config.VehicleTypes[type].default_garage,
             ['@type'] = type,
         })
-    end
+        
+        local sql2 = "INSERT INTO `dream_vehicle_plate_log`( `vin`, `plate`) VALUES (@vin, @plate)"
+        result2 = MySQL.Sync.execute(sql2 , {
+            ['@vin'] = vin,
+            ['@plate'] = data.plate,
+        })
 
+        if result2 <= 0 then
+            sql2 = string.gsub( sql2,'@vin',vin )
+            sql2 = string.gsub( sql2,'@plate',data.plate )
+            print('[^1ERROR^7] ' .. sql2)
+        end
+        
+    end
+    
     if result >= 1 then
         return true
     end
@@ -64,25 +79,4 @@ function setVehicleData(plate, data)
     end
 
     return false
-end
-
-function setVehiclePlate(oldplate, newplate)
-    local result = 0
-
-    vehicledata = json.decode(getVehicleByPlate(oldplate).data)
-
-    vehicledata.plate = newplate
-
-    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `data` = @data, `plate` = @newplate WHERE `plate` = @oldplate" , {
-        ['@data'] = json.encode(vehicledata),
-        ['@newplate'] = newplate,
-        ['@oldplate'] = oldplate,
-    })
-    
-    if result >= 1 then
-        return true
-    end
-
-    return false
-
 end

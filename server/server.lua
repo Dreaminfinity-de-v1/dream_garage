@@ -5,6 +5,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 Citizen.CreateThread(function()
     MySQL.Async.execute(
         "CREATE TABLE IF NOT EXISTS `dream_owned_vehicle` ( " ..
+        "`vin` varchar(17) NOT NULL UNIQUE, " ..
         "`plate` varchar(8) NOT NULL, " ..
         "`owner` varchar(60) NOT NULL, " ..
         "`data` longtext NOT NULL, " ..
@@ -21,6 +22,16 @@ Citizen.CreateThread(function()
         "`id` int(11) NOT NULL auto_increment PRIMARY KEY, " ..
         "`plate` varchar(50) NOT NULL, " ..
         "`key_owner` varchar(60) NOT NULL " ..
+        ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",
+        {}, function(rowsChanged) end
+    )
+
+    MySQL.Async.execute(
+        "CREATE TABLE IF NOT EXISTS `dream_vehicle_plate_log` ( " ..
+        "`id` int(11) NOT NULL auto_increment PRIMARY KEY, " ..
+        "`vin` varchar(17) NOT NULL UNIQUE, " ..
+        "`plate` varchar(50) NOT NULL, " ..
+        "`date` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP " ..
         ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",
         {}, function(rowsChanged) end
     )
