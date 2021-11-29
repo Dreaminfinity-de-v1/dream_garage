@@ -21,6 +21,7 @@ Locales['en'] = {
   ['garagemenu_subtitel'] = "Garage: %s",
   ['garage_parkingin_titel'] = "Parking In",
   ['garage_parkingout_titel'] = "Parking Out",
+  ['garage_parkingoutshared_titel'] = "Parking Out - Shared Vehicle",
   ['garage_parkinglist_titel'] = "Vehicle List",
 
   ['garage_parkinglist_noitem'] = "~r~No owned vehicle",
@@ -45,6 +46,7 @@ Locales['en'] = {
   ['garage_parkingout_item_shared_desc'] = "Enter for shared vehicle",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
+  
 
   ['garage_parkingout_item_shared_add'] = "~o~Add user",
   ['garage_parkingout_item_shared_add_desc'] = "Add user to shared this Vehicle",

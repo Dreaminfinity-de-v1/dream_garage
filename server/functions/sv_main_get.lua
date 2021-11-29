@@ -32,3 +32,13 @@ function getVehicleByPlate(plate)
         return vehicles[1]
     end
 end
+
+function getVehicleByVIN(vin)
+    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle` WHERE `vin` = @vin', {['@vin'] = vin})
+
+    if #vehicles >= 1 then
+        vehicles[1].data = json.decode(vehicles[1].data)
+        vehicles[1].data.plate = vehicles[1].plate
+        return vehicles[1]
+    end
+end

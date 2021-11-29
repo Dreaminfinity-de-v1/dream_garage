@@ -30,7 +30,7 @@ function addParkingoutMenu(mainMenu)
 
                 submenu:AddItem(parkingout)
                 submenu:AddItem(rename)
-                addSharedParkingoutMenu(submenu)
+                addParkingoutSharedOptionsMenu(submenu)
 
                 local _garage = garage
                 
@@ -74,7 +74,6 @@ function addParkingoutMenu(mainMenu)
     onMenuCreated()
     return menu
 end
-
 
 function onParkingoutItemClick(_data, garage, _index, _menu, _submenu)
 

@@ -58,11 +58,12 @@ client_scripts {
 	'client/functions/give_vehicle.lua',
 	'client/functions/savepros.lua',
 
-	'client/garagemanger_menu/menu_garagemanager.lua',
-	'client/garagemanger_menu/menu_parking_in.lua',
-	'client/garagemanger_menu/menu_parking_out.lua',
-	'client/garagemanger_menu/menu_parking_out_shared.lua',
-	'client/garagemanger_menu/menu_parking_list.lua',
+	'client/garagemanger_menu/garagemanager_menu.lua',
+	'client/garagemanger_menu/parking-in/parking-in.lua',
+	'client/garagemanger_menu/parking-out/parking-out.lua',
+	'client/garagemanger_menu/parking-out/parking-out-sharedoptions.lua',
+	'client/garagemanger_menu/parking-out-shared/parking-out-shared.lua',
+	'client/garagemanger_menu/vehicle-list/vehicle-list.lua',
 
 	'client/towingyardmanager_menu/menu_towingyardmanager.lua',
 	'client/towingyardmanager_menu/menu_towingyard_out.lua',
@@ -76,6 +77,8 @@ server_export {
 	'getRandomPlate',
 	'getRandomPlateByGrade',
 	'getRandomPlateByVehicletype',
+	'getVehicleByPlate',
+	'getVehicleByVIN',
 }
 
 dependencies {

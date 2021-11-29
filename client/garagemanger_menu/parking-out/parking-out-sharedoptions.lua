@@ -1,4 +1,4 @@
-function addSharedParkingoutMenu(vehiclemenu_item)
+function addParkingoutSharedOptionsMenu(vehiclemenu_item)
     
     local sharedmenu = menuPool:AddSubMenu(vehiclemenu_item, _U('garage_parkingout_item_shared'), _U('garage_parkingout_item_shared_desc'))
 
