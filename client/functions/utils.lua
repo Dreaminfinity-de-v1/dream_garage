@@ -69,3 +69,12 @@ function getMoney(account)
         end
     end
 end
+
+
+function onMenuCreated()
+
+    menuPool:RefreshIndex()
+
+    menuPool:ControlDisablingEnabled(false)
+    menuPool:MouseControlsEnabled(false)
+end

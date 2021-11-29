@@ -82,9 +82,12 @@ function addParkinglist(mainMenu)
 
         
 
-        
+    
+        onMenuCreated() 
     end)
 
+    
+    onMenuCreated()
     return menu
 end
 

@@ -71,6 +71,7 @@ function addTowingyardoutMenu(menu)
             menu:AddItem(NativeUI.CreateItem(_U('towingyard_parkingout_noitem'), _U('towingyard_parkingout_noitem_desc')))
         end
 
+        onMenuCreated()
     end, towingyard.id, towingyard.vehicle_types)
 end
 

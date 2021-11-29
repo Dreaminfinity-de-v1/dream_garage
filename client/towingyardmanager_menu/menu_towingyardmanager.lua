@@ -15,13 +15,7 @@ function openTowingyardmanagerMenu()
         addTowingyardoutMenu(mainMenu)
     end
     
-    Citizen.Wait(250)
-
-    menuPool:RefreshIndex()
-
-    menuPool:ControlDisablingEnabled(false)
-    menuPool:MouseControlsEnabled(false)
-
+    onMenuCreated()
     mainMenu:Visible(true)
 
     mainMenu.OnMenuClosed = function (menu)

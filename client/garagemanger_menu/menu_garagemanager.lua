@@ -8,13 +8,8 @@ function openGaragemanagerMenu()
     addParkingoutMenu(mainMenu)
     addParkinginMenu(mainMenu)
     addParkinglist(mainMenu)
-    
-    Citizen.Wait(250)
 
-    menuPool:RefreshIndex()
-
-    menuPool:ControlDisablingEnabled(false)
-    menuPool:MouseControlsEnabled(false)
+    onMenuCreated()
 
     mainMenu:Visible(true)
 
@@ -31,4 +26,3 @@ function openGaragemanagerMenu()
     menuPool:Clear()
 
 end
-

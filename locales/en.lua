@@ -40,9 +40,22 @@ Locales['en'] = {
   ['garage_parkingout_item_parkingout'] = "Park out vehicle",
   ['garage_parkingout_item_parkingout_desc'] = "Enter for parking out!",
   ['garage_parkingout_item_rename'] = "Rename vehicle",
-  ['garage_parkingout_item_rename_desc'] = "Enter for change Vehiclename",
+  ['garage_parkingout_item_rename_desc'] = "Enter for change vehiclename",
+  ['garage_parkingout_item_shared'] = "Shared vehicle",
+  ['garage_parkingout_item_shared_desc'] = "Enter for shared vehicle",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
+
+  ['garage_parkingout_item_shared_add'] = "~o~Add user",
+  ['garage_parkingout_item_shared_add_desc'] = "Add user to shared this Vehicle",
+  ['garage_parkingout_item_shared_char'] = "%s",
+  ['garage_parkingout_item_shared_char_desc'] = "",
+  ['garage_parkingout_item_shared_char_cancel'] = "Cancel",
+  ['garage_parkingout_item_shared_char_cancel_desc'] = "",
+  ['garage_parkingout_item_shared_char_rename'] = "Rename character",
+  ['garage_parkingout_item_shared_char_rename_desc'] = "Rename this character ",
+  ['garage_parkingout_item_shared_char_remove'] = "~r~Remove character",
+  ['garage_parkingout_item_shared_char_remove_desc'] = "Do you want remove?",
 
 
   -- Towingyardmanager --
@@ -80,6 +93,18 @@ Locales['en'] = {
   ['notification_message_parkingout_nofreeparkarea'] = "No parking space",
   ['notification_message_parkingout_already_out'] = "Car already out",
 
+  ['notification_message_parkingout_sharedvehicle'] = "Character was added to the vehicle",
+  ['notification_message_parkingout_sharedvehicle_no_carkey'] = "You don't have any car keys",
+  ['notification_message_parkingout_sharedvehicle_no_name'] = "You must enter a name",
+  ['notification_message_parkingout_sharedvehicle_no_userid'] = "Add UserID",
+  ['notification_message_parkingout_sharedvehicle_name_to_long'] = "Charactername is to long.",
+  ['notification_message_parkingout_sharedvehicle_cant_give_self'] = "You have already access",
+  ['notification_message_parkingout_sharedvehicle_player_not_exist'] = "Player not found",
+  ['notification_message_parkingout_sharedvehicle_owner_exist'] = "Char is already added",
+  ['notification_message_parkingout_removesharedvehicle'] = "Character was remove to the vehicle",
+  ['notification_message_parkingout_removesharedvehicle_no_place'] = "Your Inventory is full",
+  ['notification_message_parkingout_renamesharedcharactername'] = "Succsessful rename this character",
+
   ['notification_message_parkingin_in-the-vehicle'] = "You're in this Vehicle",
   ['notification_message_parkingin'] = "Vehicle is in the Garage",
   ['notification_message_parkingin_already_in'] = "Car already in",
@@ -89,10 +114,19 @@ Locales['en'] = {
   ['notification_message_parkingout_debug_spawnpoint2'] = "Debug_Garagename: %s",
   ['notification_message_parkingout_debug_getVehicleinParkingarea'] = "Debug_Plate: %s",
 
+
+-- Inputs --
   ['input_submit'] = "Submit",
   ['input_cancel'] = "Cancel",
   ['input_rename_titel'] = "Change Car Name",
   ['input_rename_inputfield'] = "Tipe your new name here",
+
+  ['input_addsharedcharacter_titel'] = "Add character",
+  ['input_addsharedcharacter_inputfield'] = "Name of character",
+  ['input_addsharedcharacterid_inputfield'] = "UserID",
+
+  ['input_renamesharedcharacter_titel'] = "Rename character",
+  ['input_renamesharedcharacter_inputfield'] = "New charactername",
 
 
 -- Command --

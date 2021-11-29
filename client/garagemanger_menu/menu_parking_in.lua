@@ -44,10 +44,13 @@ function addParkinginMenu(mainMenu)
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_parkingin_noitem'), _U('garage_parkingin_noitem_desc')))
         end
+        
+        onMenuCreated()
     end, garage.vehicle_types)
 
 
 
+    onMenuCreated()
     return menu
 end
 

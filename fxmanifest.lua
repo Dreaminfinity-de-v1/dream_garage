@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Vehicle garage from Dreaminfinity.de'
 
-version '0.6.3-beta'
+version '0.7.0-beta'
 
 author 'EThunder, Grewo'
 
@@ -30,7 +30,9 @@ server_scripts {
 	'server/functions/sv_towingyardmanager.lua',
 	'server/sv_cmd_givevehicle.lua',
 	'server/sv_cmd_saveprops.lua',
-	'server/sv_towingyard_Zero-User.lua'
+	'server/sv_towingyard_Zero-User.lua',
+	
+	'server/functions/sv_carkey.lua',
 }
 
 client_scripts {
@@ -59,6 +61,7 @@ client_scripts {
 	'client/garagemanger_menu/menu_garagemanager.lua',
 	'client/garagemanger_menu/menu_parking_in.lua',
 	'client/garagemanger_menu/menu_parking_out.lua',
+	'client/garagemanger_menu/menu_parking_out_shared.lua',
 	'client/garagemanger_menu/menu_parking_list.lua',
 
 	'client/towingyardmanager_menu/menu_towingyardmanager.lua',

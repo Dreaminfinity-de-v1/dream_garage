@@ -23,13 +23,14 @@ function addParkingoutMenu(mainMenu)
                     submenu.ParentItem:RightLabel(displayName)
                 end
 
-                local parkingout =  NativeUI.CreateItem(_U('garage_parkingout_item_parkingout'), _U('garage_parkingout_item_parkingout_desc'))
-                local rename =  NativeUI.CreateItem(_U('garage_parkingout_item_rename'), _U('garage_parkingout_item_rename_desc'))
+                local parkingout = NativeUI.CreateItem(_U('garage_parkingout_item_parkingout'), _U('garage_parkingout_item_parkingout_desc'))
+                local rename = NativeUI.CreateItem(_U('garage_parkingout_item_rename'), _U('garage_parkingout_item_rename_desc'))
 
                 submenu.data = v
 
                 submenu:AddItem(parkingout)
                 submenu:AddItem(rename)
+                addSharedParkingoutMenu(submenu)
 
                 local _garage = garage
                 
@@ -54,10 +55,7 @@ function addParkingoutMenu(mainMenu)
 
                             elseif item == rename then
                                 onRenameItemClick(item)
-
-                            else
-
-                                print('ERROR')
+                                
                             end
                             return
                         end
@@ -69,9 +67,11 @@ function addParkingoutMenu(mainMenu)
             end
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_parkingout_noitem'), _U('garage_parkingout_noitem_desc')))
-        end    
+        end   
+        onMenuCreated() 
     end, garage.id, garage.vehicle_types)
-
+    
+    onMenuCreated()
     return menu
 end
 
