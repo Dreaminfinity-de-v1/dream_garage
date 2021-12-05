@@ -6,7 +6,9 @@ function openGaragemanagerMenu()
 
     
     addParkingoutMenu(mainMenu)
-    addParkingoutSharedMenu(mainMenu)
+    if Config.AllowedSharedKeys then
+        addParkingoutSharedMenu(mainMenu)
+    end
     addParkinginMenu(mainMenu)
     addParkinglist(mainMenu)
 

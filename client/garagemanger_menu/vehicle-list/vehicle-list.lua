@@ -40,7 +40,7 @@ function addParkinglist(mainMenu)
             if sort == 'config_garages' then
                 for i, v in ipairs(Config.Garages) do
                     if items[v.id] ~= nil then
-                        submenu = menuPool:AddSubMenu(menu, v.name)
+                        submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_garage', v.name))
                         for k, v in pairs(items[v.id]) do
                             submenu:AddItem(v.item)
                             onMenuCreated(submenu)
@@ -52,7 +52,7 @@ function addParkinglist(mainMenu)
             elseif sort == 'config_towingyards' then
                 for i, v in ipairs(Config.Towingyards) do
                     if items[v.id] ~= nil then
-                        submenu = menuPool:AddSubMenu(menu, v.name)
+                        submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_towingyard', v.name))
                         for k, v in pairs(items[v.id]) do
                             submenu:AddItem(v.item)
                             onMenuCreated(submenu)

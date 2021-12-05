@@ -29,7 +29,9 @@ Locales['en'] = {
   ['garage_vehiclelist_noitem_desc'] = "",
   ['garage_vehiclelist_item'] = "[%s]",
   ['garage_vehiclelist_item_desc'] = "",
-  ['garage_vehiclelist_item_out-of-garage'] = "~o~Out of garage",
+  ['garage_vehiclelist_item_garage'] = "%s",
+  ['garage_vehiclelist_item_towingyard'] = "~o~%s",
+  ['garage_vehiclelist_item_out-of-garage'] = "~c~Out of garage",
   ['garage_vehiclelist_item_unknown-garage'] = "~r~Unknown garage: %s",
 
   -- Parking In

@@ -7,7 +7,9 @@ Config.NPCsDefaultType  = 4
 Config.NPCsDefaultModel = "ig_mp_agent14"
 
 Config.KeyControle      = 38 -- Default: 38 (E)
+
 Config.ItemName = "carkey"
+Config.AllowedSharedKeys = true
 
 Config.TowingyardJob = "mechanic"
 Config.ImpoundPrice = 250
@@ -44,7 +46,7 @@ Config.Notification = {
 
 Config.Debugmode = {
     enable = false,
-    blips = true,
+    blips = false,
     marker = {
         yellow = true,
         red = true,

@@ -30,7 +30,9 @@ function addParkingoutMenu(mainMenu)
 
                 submenu:AddItem(parkingout)
                 submenu:AddItem(rename)
-                addParkingoutSharedOptionsMenu(submenu)
+                if Config.AllowedSharedKeys then
+                    addParkingoutSharedOptionsMenu(submenu)
+                end
 
                 local _garage = garage
                 
