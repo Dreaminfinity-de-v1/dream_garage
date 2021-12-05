@@ -64,14 +64,14 @@ function addParkingoutMenu(mainMenu)
                     print("ERROR: Item not found!")
                 end
 
+                onMenuCreated(submenu)
             end
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_parkingout_noitem'), _U('garage_parkingout_noitem_desc')))
-        end   
-        onMenuCreated() 
+        end
+        onMenuCreated(menu)
     end, garage.id, garage.vehicle_types)
     
-    onMenuCreated()
     return menu
 end
 

@@ -31,8 +31,6 @@ function addParkinglist(mainMenu)
                 else
                     table.insert( none, { item = item, data = v } )
                 end
-        
-                item.Activated = onParkinglistItemClick
             end
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_vehiclelist_noitem'), _U('garage_vehiclelist_noitem_desc')))
@@ -45,6 +43,7 @@ function addParkinglist(mainMenu)
                         submenu = menuPool:AddSubMenu(menu, v.name)
                         for k, v in pairs(items[v.id]) do
                             submenu:AddItem(v.item)
+                            onMenuCreated(submenu)
                         end
         
                         items[v.id] = nil
@@ -56,6 +55,7 @@ function addParkinglist(mainMenu)
                         submenu = menuPool:AddSubMenu(menu, v.name)
                         for k, v in pairs(items[v.id]) do
                             submenu:AddItem(v.item)
+                            onMenuCreated(submenu)
                         end
         
                         items[v.id] = nil
@@ -67,6 +67,7 @@ function addParkinglist(mainMenu)
                         submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_unknown-garage', v[1].data.garage_id))
                         for i2, v2 in ipairs(v) do
                             submenu:AddItem(v2.item)
+                            onMenuCreated(submenu)
                         end
                     end
                 end
@@ -75,24 +76,14 @@ function addParkinglist(mainMenu)
                     submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_out-of-garage'))
                     for k, v in pairs(none) do
                         submenu:AddItem(v.item)
+                        onMenuCreated(submenu)
                     end
                 end
             end
         end
 
-        
-
-    
-        onMenuCreated() 
+        onMenuCreated(menu)
     end)
 
-    
-    onMenuCreated()
     return menu
-end
-
-
-function onParkinglistItemClick(sender, index)
-    --result = 'Geändert - Bugmode'
-    --index:RightLabel(result)
 end

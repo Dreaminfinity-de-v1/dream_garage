@@ -28,9 +28,10 @@ function addParkingoutSharedOptionsMenu(vehiclemenu_item)
                         onSharedRenameItemClick(sender, item, index, menu)
                     end
                 end
+                onMenuCreated(characterkeymenu)
             end
         end
-        onMenuCreated()
+        onMenuCreated(sharedmenu)
     end, vehiclemenu_item.data.vin)
     
         
@@ -41,7 +42,7 @@ function addParkingoutSharedOptionsMenu(vehiclemenu_item)
         end
     end
 
-    onMenuCreated()
+    onMenuCreated(sharedmenu)
 end
 
 function onSharedAddItemClick(sender, item, index)

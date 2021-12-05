@@ -7,17 +7,17 @@ function addParkingoutSharedMenu(mainMenu)
         
         if #vehicles > 0 then
             for i, v in ipairs(vehicles) do
-                local item_x = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), _U('garage_parkingin_item_desc'))
+                local item = NativeUI.CreateItem(_U('garage_parkingin_item', v.data.plate), _U('garage_parkingin_item_desc'))
                 local displayName = getVehicleNameByModel(v.data.model)
 
                 if v.custom_name ~= nil then
-                    item_x:RightLabel(v.custom_name)
+                    item:RightLabel(v.custom_name)
                 elseif displayName ~= nil then
-                    item_x:RightLabel(displayName)
+                    item:RightLabel(displayName)
                 end
 
-                item_x.data = v
-                menu:AddItem(item_x)
+                item.data = v
+                menu:AddItem(item)
 
                 local _garage = garage
                 
@@ -41,8 +41,8 @@ function addParkingoutSharedMenu(mainMenu)
         else
             menu:AddItem(NativeUI.CreateItem(_U('garage_parkingout_noitem'), _U('garage_parkingout_noitem_desc')))
         end
+        onMenuCreated(menu)
 
-        onMenuCreated()
     end, garage.id, garage.vehicle_types)
     return menu
 end

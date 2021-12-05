@@ -66,12 +66,13 @@ function addTowingyardoutMenu(menu)
                     end
 
                 end
+                onMenuCreated(submenu)
             end
         else
             menu:AddItem(NativeUI.CreateItem(_U('towingyard_parkingout_noitem'), _U('towingyard_parkingout_noitem_desc')))
         end
 
-        onMenuCreated()
+        onMenuCreated(menu)
     end, towingyard.id, towingyard.vehicle_types)
 end
 

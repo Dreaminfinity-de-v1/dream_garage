@@ -10,8 +10,7 @@ function openGaragemanagerMenu()
     addParkinginMenu(mainMenu)
     addParkinglist(mainMenu)
 
-    onMenuCreated()
-
+    onMenuCreated(mainMenu)
     mainMenu:Visible(true)
 
     mainMenu.OnMenuClosed = function (menu)

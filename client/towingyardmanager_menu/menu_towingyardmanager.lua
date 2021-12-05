@@ -14,8 +14,8 @@ function openTowingyardmanagerMenu()
     else
         addTowingyardoutMenu(mainMenu)
     end
+    onMenuCreated(mainMenu)
     
-    onMenuCreated()
     mainMenu:Visible(true)
 
     mainMenu.OnMenuClosed = function (menu)

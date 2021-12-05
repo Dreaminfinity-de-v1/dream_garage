@@ -71,9 +71,11 @@ function getMoney(account)
 end
 
 
-function onMenuCreated()
+function onMenuCreated(menu)
 
-    menuPool:RefreshIndex()
+    if menu ~= nil then
+        menu:RefreshIndex()
+    end
 
     menuPool:ControlDisablingEnabled(false)
     menuPool:MouseControlsEnabled(false)
