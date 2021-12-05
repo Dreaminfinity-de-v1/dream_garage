@@ -51,7 +51,7 @@ function onSharedAddItemClick(sender, item, index)
     local found = false
 
     for i,v in ipairs(ESX.GetPlayerData().inventory) do
-        if v.name == 'carkey' and v.count >= 1 then
+        if v.name == Config.ItemName and v.count >= 1 then
             found = true
             break
         end
