@@ -75,8 +75,6 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
                                 Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.success,'white',true,Config.Notification.icons.garage_close)
                         end
 
-
-
                     elseif error == 'not_allowed' then
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_not_allowed'),
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.garage_warn)
@@ -86,7 +84,6 @@ function onParkinginItemClick(_data, garage, sender, _index, _menu)
                             TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingin_already_in'),
                                 Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.warn,'black',true,Config.Notification.icons.garage_close)
                         end
-
 
                     elseif error == 'database' then
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_database'),

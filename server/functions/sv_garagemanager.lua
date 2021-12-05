@@ -6,7 +6,9 @@ function setVehicleOutparking(license, plate, allowed)
     end
     
     if vehicle.owner ~= license and not allowed then
-        return 'not_allowed'
+        if not isSharedCharacter(vehicle.vin, license) then
+            return 'not_allowed'
+        end
     end
 
     if vehicle.garage_id == nil then
@@ -32,7 +34,9 @@ function setVehicleInparking(license, plate, garage_id, props, allowed)
     end
     
     if vehicle.owner ~= license and not allowed then
-        return 'not_allowed'
+        if not isSharedCharacter(vehicle.vin, license) then
+            return 'not_allowed'
+        end
     end
 
     if vehicle.garage_id ~= nil then

@@ -76,8 +76,6 @@ function addParkingoutMenu(mainMenu)
 end
 
 function onParkingoutItemClick(_data, garage, _index, _menu, _submenu)
-
-
     local found = false
     local data = _data
     local menu = _menu
@@ -97,7 +95,9 @@ function onParkingoutItemClick(_data, garage, _index, _menu, _submenu)
                         menu:AddItem(NativeUI.CreateItem(_U('garage_parkingout_noitem'), _U('garage_parkingout_noitem_desc')))
                         menu:RefreshIndex()
                     end
-                    submenu:GoBack()
+                    if submenu ~= nil then
+                        submenu:GoBack()
+                    end
 
                     ESX.Game.SpawnVehicle(data.data.model, v.coords , v.heading, function(vehicle)
                         TriggerEvent("swt_notifications:captionIcon",_U('notifications_titel'),_U('notification_message_parkingout'),

@@ -1,6 +1,6 @@
 function addParkinglist(mainMenu)
     
-    menu = menuPool:AddSubMenu(mainMenu, _U('garage_parkinglist_titel'))
+    menu = menuPool:AddSubMenu(mainMenu, _U('garage_vehiclelist_titel'))
 
 
 
@@ -13,7 +13,7 @@ function addParkinglist(mainMenu)
         if #vehicles > 0 then
             for i, v in ipairs(vehicles) do
 
-                item = NativeUI.CreateItem(_U('garage_parkinglist_item', v.plate), _U('garage_parkinglist_item_desc'))
+                item = NativeUI.CreateItem(_U('garage_vehiclelist_item', v.plate), _U('garage_vehiclelist_item_desc'))
                 local displayName = getVehicleNameByModel(v.data.model)
 
                 if v.custom_name ~= nil then
@@ -35,7 +35,7 @@ function addParkinglist(mainMenu)
                 item.Activated = onParkinglistItemClick
             end
         else
-            menu:AddItem(NativeUI.CreateItem(_U('garage_parkinglist_noitem'), _U('garage_parkinglist_noitem_desc')))
+            menu:AddItem(NativeUI.CreateItem(_U('garage_vehiclelist_noitem'), _U('garage_vehiclelist_noitem_desc')))
         end     
 
         for _, sort in ipairs(Config.GarageParkinglistSort) do
@@ -64,7 +64,7 @@ function addParkinglist(mainMenu)
             elseif sort == 'unknown_garages' then
                 for k, v in pairs(items) do
                     if #v > 0 and v[1].data.garage_id ~= nil then
-                        submenu = menuPool:AddSubMenu(menu, _U('garage_parkinglist_item_unknown-garage', v[1].data.garage_id))
+                        submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_unknown-garage', v[1].data.garage_id))
                         for i2, v2 in ipairs(v) do
                             submenu:AddItem(v2.item)
                         end
@@ -72,7 +72,7 @@ function addParkinglist(mainMenu)
                 end
             elseif sort == 'out_of_garages' then
                 if #none > 0 then
-                    submenu = menuPool:AddSubMenu(menu, _U('garage_parkinglist_item_out-of-garage'))
+                    submenu = menuPool:AddSubMenu(menu, _U('garage_vehiclelist_item_out-of-garage'))
                     for k, v in pairs(none) do
                         submenu:AddItem(v.item)
                     end

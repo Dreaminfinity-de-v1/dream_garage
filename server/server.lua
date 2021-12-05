@@ -20,7 +20,7 @@ Citizen.CreateThread(function()
     MySQL.Async.execute(
         "CREATE TABLE IF NOT EXISTS `dream_vehicle_keys` ( " ..
         "`id` int(11) NOT NULL auto_increment PRIMARY KEY, " ..
-        "`plate` varchar(50) NOT NULL, " ..
+        "`vin` varchar(17) NOT NULL, " ..
         "`key_owner` varchar(60) NOT NULL, " ..
         "`name` varchar(20) NOT NULL " ..
         ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",

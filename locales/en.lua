@@ -16,26 +16,29 @@ Locales['en'] = {
   ['config_allowedpayments_black_money'] = "Black Money",
  
 
-  -- Garagemanager --
+-- Garagemanager --
   ['garagemenu_titel'] = "Garage Menu",
   ['garagemenu_subtitel'] = "Garage: %s",
   ['garage_parkingin_titel'] = "Parking In",
   ['garage_parkingout_titel'] = "Parking Out",
   ['garage_parkingoutshared_titel'] = "Parking Out - Shared Vehicle",
-  ['garage_parkinglist_titel'] = "Vehicle List",
+  ['garage_vehiclelist_titel'] = "Vehicle List",
 
-  ['garage_parkinglist_noitem'] = "~r~No owned vehicle",
-  ['garage_parkinglist_noitem_desc'] = "",
-  ['garage_parkinglist_item'] = "[%s]",
-  ['garage_parkinglist_item_desc'] = "",
-  ['garage_parkinglist_item_out-of-garage'] = "~o~Out of garage",
-  ['garage_parkinglist_item_unknown-garage'] = "~r~Unknown garage: %s",
+  -- List
+  ['garage_vehiclelist_noitem'] = "~r~No owned vehicle",
+  ['garage_vehiclelist_noitem_desc'] = "",
+  ['garage_vehiclelist_item'] = "[%s]",
+  ['garage_vehiclelist_item_desc'] = "",
+  ['garage_vehiclelist_item_out-of-garage'] = "~o~Out of garage",
+  ['garage_vehiclelist_item_unknown-garage'] = "~r~Unknown garage: %s",
 
+  -- Parking In
   ['garage_parkingin_item'] = "[%s]",
   ['garage_parkingin_item_desc'] = "Enter for parking!",
   ['garage_parkingin_noitem'] = "~r~No owned vehicle",
   ['garage_parkingin_noitem_desc'] = "Drive your vehicle in area",
   
+  -- Parking Out
   ['garage_parkingout_item'] = "[%s]",
   ['garage_parkingout_item_custom'] = "[%s] - %s",
   ['garage_parkingout_item_parkingout'] = "Park out vehicle",
@@ -46,7 +49,6 @@ Locales['en'] = {
   ['garage_parkingout_item_shared_desc'] = "Enter for shared vehicle",
   ['garage_parkingout_noitem'] = "~r~No owned vehicle",
   ['garage_parkingout_noitem_desc'] = "You don't have any vehicles here!",
-  
 
   ['garage_parkingout_item_shared_add'] = "~o~Add user",
   ['garage_parkingout_item_shared_add_desc'] = "Add user to shared this Vehicle",
@@ -58,9 +60,13 @@ Locales['en'] = {
   ['garage_parkingout_item_shared_char_rename_desc'] = "Rename this character ",
   ['garage_parkingout_item_shared_char_remove'] = "~r~Remove character",
   ['garage_parkingout_item_shared_char_remove_desc'] = "Do you want remove?",
+  
+  -- Parking Out - Shared
+  ['garage_parkingoutshared_item'] = "[%s]",
+  ['garage_parkingoutshared_item_desc'] = "",
 
 
-  -- Towingyardmanager --
+-- Towingyardmanager --
   ['towingyardmenu_titel'] = "Towingyard Menu",
   ['towingyardmenu_subtitel'] = "Towingyard: %s",
   ['towingyard_towingyardmenu_titel'] = "Towingyard Menu",

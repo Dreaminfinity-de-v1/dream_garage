@@ -6,6 +6,7 @@ function openGaragemanagerMenu()
 
     
     addParkingoutMenu(mainMenu)
+    addParkingoutSharedMenu(mainMenu)
     addParkinginMenu(mainMenu)
     addParkinglist(mainMenu)
 

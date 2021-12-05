@@ -15,7 +15,7 @@ function addParkingoutSharedOptionsMenu(vehiclemenu_item)
                 local itemremove = NativeUI.CreateItem(_U('garage_parkingout_item_shared_char_remove'), _U('garage_parkingout_item_shared_char_remove_desc'))
                 local itemrename = NativeUI.CreateItem(_U('garage_parkingout_item_shared_char_rename'),_U('garage_parkingout_item_shared_char_rename_desc'))
 
-                characterkeymenu.data = v
+                characterkeymenu.data = {key_owner = v.key_owner, name = v.name}
                 characterkeymenu:AddItem(itemrename)
                 characterkeymenu:AddItem(itemremove)
 
@@ -31,7 +31,7 @@ function addParkingoutSharedOptionsMenu(vehiclemenu_item)
             end
         end
         onMenuCreated()
-    end, vehiclemenu_item.data.plate)
+    end, vehiclemenu_item.data.vin)
     
         
     sharedmenu.OnItemSelect = function(sender, item, index)
@@ -97,7 +97,7 @@ function onSharedAddItemClick(sender, item, index)
                         local itemremove = NativeUI.CreateItem(_U('garage_parkingout_item_shared_char_remove'), _U('garage_parkingout_item_shared_char_remove_desc'))
                         local itemrename = NativeUI.CreateItem(_U('garage_parkingout_item_shared_char_rename'),_U('garage_parkingout_item_shared_char_rename_desc'))
         
-                        characterkeymenu.data = {plate = data.plate, key_owner = target, name = dialog[1].input}
+                        characterkeymenu.data = {key_owner = target, name = dialog[1].input}
                         characterkeymenu:AddItem(itemrename)
                         characterkeymenu:AddItem(itemremove)
 
@@ -145,7 +145,7 @@ function onSharedAddItemClick(sender, item, index)
                             Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
 
                     end
-                end, dialog[1].input, dialog[2].input, data.plate)
+                end, dialog[1].input, dialog[2].input, data.vin)
             end
             
         end
@@ -156,6 +156,8 @@ function onSharedAddItemClick(sender, item, index)
 end
 
 function onSharedRemoveItemClick(sender, item, index, menu)
+    local data = item.ParentMenu.ParentItem.ParentMenu.ParentItem.ParentMenu.data
+
     ESX.TriggerServerCallback('dream_garage:removeSharedCharacter', function(error)
 
         if error == 'ok' then
@@ -191,18 +193,18 @@ function onSharedRemoveItemClick(sender, item, index, menu)
                 Config.Notification.pos,Config.Notification.timeout,Config.Notification.color.negative,'white',true,Config.Notification.icons.database)
 
         end                 
-    end, menu.data)
+    end, data.vin, menu.data.key_owner)
 end
 
 function onSharedRenameItemClick(sender, item, index, menu)
-
+    local data = item.ParentMenu.ParentItem.ParentMenu.ParentItem.ParentMenu.data
     local dialog = exports['zf_dialog']:DialogInput({
         submit = _U('input_submit'),
         cancel = _U('input_cancel'),
         header = _U('input_renamesharedcharacter_titel'),
         rows = {
             {
-                id = 0, 
+                id = 0,
                 txt = _U('input_renamesharedcharacter_inputfield'),
                 content = item.ParentMenu.data.name,
             },
@@ -253,7 +255,7 @@ function onSharedRenameItemClick(sender, item, index, menu)
         
                 end
 
-            end, menu.data, dialog[1].input)
+            end, data.vin, menu.data.key_owner, dialog[1].input)
         end
     end
 end
