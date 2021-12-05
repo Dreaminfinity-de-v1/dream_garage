@@ -10,14 +10,14 @@ ESX.RegisterServerCallback('dream_garage:addSharedCharacter', function(src, cb, 
         cb('player_not_exist')
     elseif tonumber(src) == tonumber(userid) then
         cb('cant_give_self')
-    elseif xPlayer.getInventoryItem(Config.ItemName).count < 1 then --TODO itemname aus Config.Itemname
+    elseif xPlayer.getInventoryItem(Config.ItemName).count < 1 then
         cb('no_item')
     elseif isSharedCharacter(vin, target.getIdentifier()) then
         cb('owner_exist')
     elseif not addSharedCharacter(charname, target.getIdentifier(), vin) then
         cb('database')
     else
-        --TODO Remove Item 'carkey'
+        xPlayer.removeInventoryItem(Config.ItemName, 1)
         cb('ok', target.getIdentifier())
     end
 end)
@@ -45,12 +45,12 @@ ESX.RegisterServerCallback('dream_garage:removeSharedCharacter', function(src, c
         cb('not_allowed')
     elseif xPlayer == nil then
         cb('player_not_exist')
-    elseif xPlayer.getWeight() + xPlayer.getInventoryItem(Config.ItemName).weight > ESX.GetConfig().MaxWeight then  --TODO itemname aus Config.Itemname
+    elseif xPlayer.getWeight() + xPlayer.getInventoryItem(Config.ItemName).weight > ESX.GetConfig().MaxWeight then
         cb('no_place')
     elseif not removeSharedCharacter(vin, key_owner) then
         cb('database')
     else
-        --TODO Add Item 'carkey'
+        xPlayer.addInventoryItem(Config.ItemName, 1)
         cb('ok')
     end
 end)

@@ -4,7 +4,7 @@ game 'gta5'
 
 description 'Vehicle garage from Dreaminfinity.de'
 
-version '0.7.0-beta'
+version '0.7.1-beta'
 
 author 'EThunder, Grewo'
 
