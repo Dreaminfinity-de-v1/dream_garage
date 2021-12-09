@@ -4,7 +4,7 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 -- Create Database
 Citizen.CreateThread(function()
     MySQL.Async.execute(
-        "CREATE TABLE IF NOT EXISTS `dream_owned_vehicle` ( " ..
+        "CREATE TABLE IF NOT EXISTS `dream_owned_vehicles` ( " ..
         "`vin` varchar(17) NOT NULL UNIQUE, " ..
         "`plate` varchar(8) NOT NULL, " ..
         "`owner` varchar(60) NOT NULL, " ..

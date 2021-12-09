@@ -1,5 +1,5 @@
 function getAllVehicles()
-    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle`', {})
+    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicles`', {})
 
     for i,v in ipairs(vehicles) do
         
@@ -24,7 +24,7 @@ function getOwnedVehicles(license)
 end
 
 function getVehicleByPlate(plate)
-    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle` WHERE `plate` = @plate', {['@plate'] = plate})
+    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicles` WHERE `plate` = @plate', {['@plate'] = plate})
 
     if #vehicles >= 1 then
         vehicles[1].data = json.decode(vehicles[1].data)
@@ -34,7 +34,7 @@ function getVehicleByPlate(plate)
 end
 
 function getVehicleByVIN(vin)
-    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicle` WHERE `vin` = @vin', {['@vin'] = vin})
+    local vehicles = MySQL.Sync.fetchAll('SELECT * FROM `dream_owned_vehicles` WHERE `vin` = @vin', {['@vin'] = vin})
 
     if #vehicles >= 1 then
         vehicles[1].data = json.decode(vehicles[1].data)

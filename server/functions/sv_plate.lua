@@ -76,11 +76,11 @@ function isPlateExist(plate, vehicletype)
     local result = 0
     plate = string.upper(plate)
     if vehicletype == nil then
-        result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicle` WHERE `plate` = @plate" , {
+        result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicles` WHERE `plate` = @plate" , {
             ['@plate'] = plate,
         })
     else
-        result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicle` WHERE `plate` = @plate, `type` = @type" , {
+        result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicles` WHERE `plate` = @plate, `type` = @type" , {
             ['@plate'] = plate,
             ['@type'] = vehicletype,
         })

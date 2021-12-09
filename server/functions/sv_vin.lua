@@ -22,7 +22,7 @@ end
 function isVehicleIdentificationNumberExist(vin)
     local result = 0
 
-    result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicle` WHERE `vin` = @vin" , {
+    result = MySQL.Sync.fetchAll("SELECT * FROM `dream_owned_vehicles` WHERE `vin` = @vin" , {
         ['@vin'] = vin,
     })
 

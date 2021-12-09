@@ -22,6 +22,7 @@ Config.AllowedPayments = {
 Config.Commands = {
     give_vehicle = "givevehicle",
     save_props = "saveprops",
+    changevehicleowner = "cvo",
 }
 
 Config.Notification = {

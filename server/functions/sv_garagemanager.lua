@@ -75,12 +75,12 @@ function setVehicleCustomeName(plate, custom_name)
     local result = 0
 
     if custom_name ~= nil then
-        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `custom_name` = @custom_name WHERE `plate` = @plate" , {
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `custom_name` = @custom_name WHERE `plate` = @plate" , {
             ['@custom_name'] = custom_name,
             ['@plate'] = plate,
         })
     else
-        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicle` SET `custom_name` = NULL WHERE `plate` = @plate" , {
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `custom_name` = NULL WHERE `plate` = @plate" , {
             ['@plate'] = plate,
         })
     end

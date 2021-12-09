@@ -161,6 +161,17 @@ Locales['en'] = {
   ['cmd_setprops_usage'] = "Usage: /%s",
   ['cmd_setprops_vehicle-not-found'] = "Vehicle not found",
   ['cmd_setprops_no-vehicle'] = "You're not in a Vehicle",
+
+  ['cmd_changevehicleowner_usage'] = "Usage: /%s <target> <plate>",
+  ['cmd_changevehicleowner_usage_server'] = "Usage: %s <target> <plate>",
+  ['cmd_changevehicleowner_plate'] = "Vehicle plate",
+  ['cmd_changevehicleowner_target'] = "Target player server-id/license",
+  ['cmd_changevehicleowner_not-allowed'] = "Isn't your vehicle",
+  ['cmd_changevehicleowner_changevehicleowner-success'] = "You change the vehicleowner",
+  ['cmd_changevehicleowner_changevehicleowner-success_target'] = "You're the new Owner from vehicle: %s",
+  ['cmd_changevehicleowner_changevehicleowner-unsuccess'] = "Database error",
+  ['cmd_changevehicleowner_changevehicleowner_not-self'] = "You cann't overwrite a vehicle by yourself",
+  ['cmd_changevehicleowner_changevehicleowner_owned'] = "The User is the owner!",
 }
 
 
