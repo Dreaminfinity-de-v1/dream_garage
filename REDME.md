@@ -25,6 +25,7 @@ No functions
 ### In-Game
 - ``/saveprops`` Save Vehicleprops
 - ``/givevehicle`` Give Vehicle in GarageDatabase
+- ``/cvo`` Change Vehicle Owner
 
 
 ## Optional
