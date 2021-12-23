@@ -24,14 +24,16 @@ function setVehicle(type, target, data)
                 ['@type'] = type,
             })
             
-            local sql2 = "INSERT INTO `dream_vehicle_plate_log`( `vin`, `plate`) VALUES (@vin, @plate)"
+            local sql2 = "INSERT INTO `dream_vehicle_plate_log`( `vin`, `owner`, `plate`) VALUES (@vin, @owner, @plate)"
             result2 = MySQL.Sync.execute(sql2 , {
                 ['@vin'] = vin,
+                ['@owner'] = owner,
                 ['@plate'] = data.plate,
             })
 
             if result2 <= 0 then
                 sql2 = string.gsub( sql2,'@vin',vin )
+                sql2 = string.gsub( sql2,'@owner',owner )
                 sql2 = string.gsub( sql2,'@plate',data.plate )
                 print('[^1ERROR^7] ' .. sql2)
             end
@@ -40,6 +42,7 @@ function setVehicle(type, target, data)
     end
     
     if result >= 1 then
+        TriggerEvent('dream_garage:VehicleAddEvent', vin, data.plate, owner, data, Config.VehicleTypes[type].default_garage, type)
         return true
     end
 
@@ -47,51 +50,69 @@ function setVehicle(type, target, data)
 
 end
 
-function setVehicleGarage(plate, garage)
+function setVehicleGarage(vin, garage)
     local result = 0
 
     if garage ~= nil then
-        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `garage_id` = @garage_id WHERE `plate` = @plate" , {
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `garage_id` = @garage_id WHERE `vin` = @vin" , {
             ['@garage_id'] = garage,
-            ['@plate'] = plate,
+            ['@vin'] = vin,
         })
     else
-        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `garage_id` = NULL WHERE `plate` = @plate" , {
-            ['@plate'] = plate,
+        result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `garage_id` = NULL WHERE `vin` = @vin" , {
+            ['@vin'] = vin,
         })
     end
     
     if result >= 1 then
+        TriggerEvent('dream_garage:VehicleGarageChangeEvent', plate, garage)
         return true
     end
 
     return false
 end
 
-function setVehicleData(plate, data)
+function setVehicleData(vin, data)
     local result = 0
 
-    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `data` = @data WHERE `plate` = @plate" , {
+    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `data` = @data WHERE `vin` = @vin" , {
         ['@data'] = json.encode(data),
-        ['@plate'] = plate,
+        ['@vin'] = vin,
     })
     
     if result >= 1 then
+        TriggerEvent('dream_garage:VehicleDataChangeEvent', vin, data)
         return true
     end
 
     return false
 end
 
-function setVehicleOwner(newowner, plate)
+function setVehicleOwner(vin, newowner)
     local result = 0
+    local vehicle = getVehicleByVIN(vin)
 
-    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `owner` = @owner WHERE `plate` = @plate" , {
+    result = MySQL.Sync.execute("UPDATE `dream_owned_vehicles` SET `owner` = @owner WHERE `vin` = @vin" , {
         ['@owner'] = newowner,
-        ['@plate'] = plate,
+        ['@vin'] = vin,
     })
+            
+    local sql2 = "INSERT INTO `dream_vehicle_plate_log`( `vin`, `owner`, `plate`) VALUES (@vin, @owner, @plate)"
+    result2 = MySQL.Sync.execute(sql2 , {
+        ['@vin'] = vin,
+        ['@owner'] = newowner,
+        ['@plate'] = vehicle.plate,
+    })
+
+    if result2 <= 0 then
+        sql2 = string.gsub( sql2,'@vin',vin )
+        sql2 = string.gsub( sql2,'@owner',newowner )
+        sql2 = string.gsub( sql2,'@plate',vehicle.plate )
+        print('[^1ERROR^7] ' .. sql2)
+    end
     
     if result >= 1 then
+        TriggerEvent('dream_garage:VehicleOwnerChangeEvent', vin, newowner, vehicle)
         return true
     end
 

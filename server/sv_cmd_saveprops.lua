@@ -17,11 +17,13 @@ RegisterCommand(Config.Commands.save_props, function(source, args, rawCommand)
 end,false)
 
 
-RegisterNetEvent('dream_garage:cmd_setVehicleData', function(props)
+RegisterNetEvent('dream_garage:cmd_setVehicleData', function(plate, props)
     local src = source
     
     if IsPlayerAceAllowed(src, "dream_garage.saveProps") then
-        if setVehicleData(props.plate, props) == true then
+        
+        local vehicle = getVehicleByPlate(plate) --DEGUB
+        if setVehicleData(vehicle.vin, props) == true then
             TriggerClientEvent('chat:addMessage', src, {
                 color = { 0, 255, 0},
                 multiline = true,

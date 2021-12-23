@@ -71,7 +71,7 @@ function changeVehicleOwner(source, target, plate)
         return
     end
 
-    if setVehicleOwner(newowner, plate) == true then
+    if setVehicleOwner(vehicle.vin, newowner) == true then
         TriggerClientEvent('chat:addMessage', source, {
             color = { 0, 255, 0},
             multiline = true,

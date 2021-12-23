@@ -30,7 +30,8 @@ Citizen.CreateThread(function()
     MySQL.Async.execute(
         "CREATE TABLE IF NOT EXISTS `dream_vehicle_plate_log` ( " ..
         "`id` int(11) NOT NULL auto_increment PRIMARY KEY, " ..
-        "`vin` varchar(17) NOT NULL UNIQUE, " ..
+        "`vin` varchar(17) NOT NULL, " ..
+        "`owner` varchar(60) NOT NULL, " ..
         "`plate` varchar(50) NOT NULL, " ..
         "`date` TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP " ..
         ") ENGINE=InnoDB DEFAULT CHARSET=latin1;",

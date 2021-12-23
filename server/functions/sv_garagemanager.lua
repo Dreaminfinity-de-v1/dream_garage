@@ -15,7 +15,7 @@ function setVehicleOutparking(license, plate, allowed)
         return 'already_out'
     end
  
-    if setVehicleGarage(plate, nil) ~= true then
+    if setVehicleGarage(vehicle.vin, nil) ~= true then
         return 'database'
     end
 
@@ -60,11 +60,11 @@ function setVehicleInparking(license, plate, garage_id, props, allowed)
     end
     
 
-    if setVehicleData(plate, vehicle.data) ~= true then
+    if setVehicleData(vehicle.vin, vehicle.data) ~= true then
         return 'database'
     end
  
-    if setVehicleGarage(plate, garage_id) ~= true then
+    if setVehicleGarage(vehicle.vin, garage_id) ~= true then
         return 'database'
     end
 
